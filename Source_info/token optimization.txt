@@ -1,0 +1,362 @@
+PROMPT CONTRACT
+- Model(s): Use the currently assigned model set for the active cycle. Do not change model set mid-cycle. Model changes are permitted only at explicit cycle pause points. The orchestration system already knows available model sets and their normal token constraints; do not restate them unless required for implementation.
+- Reasoning level: Medium
+- Chat context: New chat
+- Conversation mode: Planning
+
+PROMPT:
+
+You are receiving a repository-orchestration implementation assignment.
+
+Your task is to integrate token optimization, context compression, pause-point continuation discipline, and model-bound cycle execution into the existing repository agent system and its supporting repo assets.
+
+This is an implementation task, not a research task.
+
+Do not spend time comparing vendors, subscription pricing, plan tiers, or general tool superiority.
+Do not produce a broad market analysis.
+Do not restate model catalogs unless needed for direct implementation.
+Focus on building durable repository and orchestration improvements that reduce token waste while preserving continuity and execution quality.
+
+MANDATORY EXECUTION RULES
+
+1. Every prompt cycle begins inside an assigned model set.
+2. That model set remains fixed for the duration of the cycle.
+3. A model change is only allowed after an explicit cycle pause point.
+4. The next cycle must continue from a compact carried-forward state package derived from the prior cycle.
+5. Do not design any workflow that depends on mid-cycle model switching.
+6. Do not assume full raw-history replay is the default continuation mechanism.
+7. Compression and continuation state must preserve enough clarity for the next cycle to resume without ambiguity.
+8. The orchestration system already tracks model availability and token constraints; your work must integrate with that existing awareness rather than duplicate it.
+
+PRIMARY OBJECTIVE
+
+Review the current repository orchestration system, prompt assets, workflow assets, instruction files, guidance layers, ledger/workbook artifacts, and reusable scaffolds. Then design and implement the highest-leverage changes that reduce unnecessary token consumption, reduce context drag, preserve continuity across pause points, and improve cycle-bound execution discipline.
+
+SECONDARY OBJECTIVE
+
+Ensure the system can operate effectively in an agent-first IDE environment where agents may interact across editor, terminal, browser, and related surfaces. The orchestration system must centralize compact state and avoid repeatedly expanding the same environment context across cycles.
+
+CORE IMPLEMENTATION TARGETS
+
+1. MODEL-BOUND CYCLE DISCIPLINE
+
+Review the current system for any prompts, workflows, agent policies, or orchestration logic that implicitly encourage:
+- changing model during an active cycle
+- unstable model routing without defined handoff boundaries
+- reopening broad context repeatedly inside the same cycle
+- continuing work through raw accumulation instead of compact pause-point transfer
+- mixing too many unrelated work phases into one model-bound cycle
+
+Implement rules and assets that enforce:
+- one model set per cycle
+- explicit cycle boundaries
+- explicit pause-point criteria
+- compact continuation payloads between cycles
+- continuity without carrying forward full raw history by default
+- same-model continuation after pause points when appropriate
+- cross-model continuation only after pause points using compact carried-forward state
+
+2. PAUSE-POINT HANDOFF DESIGN
+
+Design a standard pause-point package that can be generated at the end of any cycle and consumed by the next cycle, regardless of whether the next cycle uses the same model set or a different one.
+
+The pause-point handoff must preserve:
+- task objective
+- success condition
+- stop condition
+- current phase
+- exact files and folders in scope
+- repo and subproject boundary
+- current implementation state
+- decisions made
+- constraints in force
+- validation status
+- blockers
+- next recommended action
+- optional fallback next action
+- discarded paths only when materially relevant
+
+The pause-point handoff must exclude by default:
+- full raw chat history
+- verbose reasoning history
+- redundant discussion
+- stale exploration
+- superseded reasoning
+- unnecessary tool logs
+- broad unrelated repo context
+- repeated repo conventions already stored elsewhere
+- repeated environment framing already stored elsewhere
+
+3. REUSABLE INSTRUCTION PERSISTENCE
+
+Identify repeated instructions that are currently being re-sent in normal prompts and move them into durable instruction layers where possible.
+
+Focus on persistent repo and system knowledge such as:
+- repo conventions
+- coding standards
+- environment assumptions
+- validation expectations
+- commands
+- forbidden paths
+- preferred patch discipline
+- architecture notes that are stable enough to persist
+- orchestration expectations
+- task-shaping defaults
+- pause-point requirements
+- continuation format requirements
+
+Goal:
+Reduce repeated prompt payload across cycles and sessions.
+
+4. CONTEXT SCOPE REDUCTION
+
+Implement or strengthen rules that force narrow scope by default.
+
+Agents should prefer:
+- exact files over directories
+- exact directories over repo-wide inspection
+- subproject root over monorepo root
+- declared scope before exploration
+- scoped exploration before implementation
+- minimally sufficient context before action
+- targeted validation over broad validation unless needed
+
+Avoid:
+- broad repo scans without explicit need
+- loading context from unrelated files
+- carrying irrelevant exploratory context into later phases
+- defaulting to top-level repo context when a smaller boundary exists
+
+5. SESSION AND PHASE SEGMENTATION
+
+Implement disciplined workflow segmentation where beneficial.
+
+Preferred phases:
+- discovery / diagnosis
+- implementation
+- validation
+- review / cleanup
+- pause-point export
+
+Do not allow giant mixed-purpose threads unless clearly justified.
+Do not let diagnosis, implementation, review, infra changes, and unrelated follow-up work collapse into one uncontrolled token-heavy cycle.
+
+6. PROMPT COMPRESSION AND INSTRUCTION ECONOMY
+
+Review prompts, templates, orchestration scaffolds, ledgers, workbooks, handoff files, and reusable instructions for:
+- duplicated governance
+- repeated framing
+- narrative filler
+- verbose non-executable prose
+- repeated context already known elsewhere
+- oversized handoff structures
+- inefficient formatting that spends many tokens without increasing clarity
+
+Compress instructions while preserving:
+- operational clarity
+- scope clarity
+- validation expectations
+- constraints
+- task quality
+- continuity requirements
+
+Increase instruction density per token.
+
+7. TOOL LOADING DISCIPLINE
+
+Review the orchestration system for unnecessary always-on tools, oversized tool descriptions, broad default tool exposure, MCP-style sprawl, or tool activation policies that create token overhead before useful work begins.
+
+Implement a strategy that prefers:
+- task-relevant tools only
+- deferred tool activation
+- minimal default tool exposure
+- task-class-based tool selection
+- short tool-facing guidance
+- avoiding large tool preambles when not needed
+
+Reduce non-work overhead caused by tooling.
+
+8. CONTEXT COMPACTION / CONTINUATION STATE
+
+Implement a compact continuation state format that preserves continuity without dragging forward full raw history.
+
+This format must support:
+- same-model continuation after a pause point
+- cross-model continuation after a pause point
+- minimal ambiguity for the next cycle
+- materially smaller size than the raw cycle transcript
+
+The compact continuation package must preserve:
+- objective
+- scope
+- phase
+- completed work
+- remaining work
+- decisions
+- validation state
+- blockers
+- next action
+- active constraints
+
+The compact continuation package must explicitly note:
+- stale exploration removed
+- verbose logs removed
+- unrelated context removed
+- superseded reasoning removed
+
+9. TASK SHAPING
+
+Implement guidance that causes agents to establish bounded scope before expensive execution.
+
+Every substantive task should define:
+- objective
+- scope
+- change type
+- validation requirement
+- stop condition
+- pause-point condition
+
+For non-trivial tasks, the system should encourage a concise plan or task frame before broad edits or broad inspection.
+This is not permission for bloated planning. The plan must be compact and execution-oriented.
+
+10. IDE AND MULTI-SURFACE EXECUTION AWARENESS
+
+Assume the orchestration environment may operate inside an agent-first IDE environment where work can span:
+- editor
+- terminal
+- browser
+- issue / repo surfaces
+- validation / test surfaces
+
+Therefore:
+- preserve shared compact state centrally
+- avoid repeating environment setup in every cycle
+- avoid reloading the same multi-surface framing repeatedly
+- treat pause-point export as the continuity bridge across surfaces and across model-bound cycles
+- minimize repeated task restatement when moving between surfaces
+
+11. TOKEN INEFFICIENCY DETECTION
+
+Review the system for the following common waste patterns and treat them as direct remediation targets:
+- repeated instructions across cycles
+- repeated repo descriptions
+- repeated command explanations
+- giant mixed-purpose threads
+- uncontrolled repo-wide scans
+- repeated environment framing
+- always-on tool sprawl
+- repeated reconsideration of already-settled decisions
+- carrying stale logs forward
+- carrying broad exploratory context into implementation
+- overlong handoff prompts
+- overly verbose governance text inside executable prompts
+- insufficient pause-point discipline
+- missing compact continuation state
+
+12. QUALITY PRESERVATION
+
+Optimization must not materially damage:
+- task accuracy
+- scope clarity
+- safe implementation boundaries
+- validation expectations
+- continuity
+- operator trust
+- auditability where needed
+
+If a compression or token-saving change introduces a risk to quality, explicitly state:
+- expected token benefit
+- quality risk
+- reversibility
+- recommended guardrail
+
+REQUIRED OUTPUT
+
+Produce editable Markdown artifacts only.
+
+Your output must include:
+
+1. Current token inefficiency risks
+2. Current model-bound cycle risks
+3. Root causes
+4. High-impact optimization opportunities
+5. Pause-point handoff specification
+6. Compact continuation state specification
+7. Repo-level changes to implement
+8. Prompt-layer changes to implement
+9. Workflow/orchestration changes to implement
+10. Tool-loading and capability-loading changes to implement
+11. Priority-ranked implementation plan
+12. Expected effect on token pressure and overflow risk
+13. Tradeoffs, failure modes, and quality risks
+14. Exact files created or modified
+
+IMPLEMENTATION REQUIREMENT
+
+Do not stop at analysis unless blocked.
+
+Where possible, directly create or revise:
+- repo instruction files
+- orchestration guidance files
+- pause-point templates
+- compact continuation templates
+- workflow templates
+- scoped-task prompt formats
+- token-efficiency policies
+- tool-activation rules
+- repo adoption notes for these changes
+
+If implementation is partially blocked, clearly separate:
+- completed changes
+- recommended changes
+- blocked changes
+- required missing inputs
+
+DESIGN REQUIREMENTS FOR CREATED ARTIFACTS
+
+Any created or revised artifacts should be:
+- concise
+- structured
+- durable
+- reusable across future cycles
+- easy for the orchestration system to consume
+- aligned with existing governance unless that governance materially causes token waste
+
+Do not add unnecessary complexity in the name of optimization.
+Prefer minimal, high-leverage, reversible changes.
+
+CONSTRAINTS
+
+- No vendor pricing analysis
+- No subscription recommendations
+- No broad product comparison writeups
+- No filler prose
+- No unnecessary architecture expansion
+- No reliance on mid-cycle model changes
+- No default full-history continuation
+- No duplication of model inventory already known to the orchestration system
+
+SELF-AUDIT BEFORE FINALIZING
+
+Check the implementation against all of the following:
+
+1. Does the design enforce one model set per cycle?
+2. Does it define explicit pause points?
+3. Does it support compact same-model continuation?
+4. Does it support compact cross-model continuation after pause points?
+5. Does it reduce repeated prompt payload?
+6. Does it reduce unnecessary repo-wide context pull?
+7. Does it reduce long-session context drag?
+8. Does it reduce unused tool overhead?
+9. Does it preserve quality while compressing instructions?
+10. Are the created artifacts editable, structured, and ready for repo adoption?
+
+Return only the implementation report and created artifacts.
+
+EXECUTION STATUS REPORT
+- Objective: Hand off a single consolidated implementation prompt directing the repository orchestration agent to integrate token optimization, context compression, pause-point continuation, and model-bound cycle discipline into repository operations.
+- Prompt issued: Yes
+- Expected output: Editable Markdown implementation report and supporting Markdown artifacts ready for repository adoption.
+- Completion criteria: The target agent identifies inefficiencies, implements high-leverage changes where possible, defines pause-point and continuation standards, and returns exact created or modified artifacts.
+- Blocking inputs: Repository-specific implementation details depend on the target repo, current orchestration assets, and existing instruction structure.
+- Next-step condition: Run this prompt against the repository orchestration agent in the target workspace or repo scope and review the returned artifacts for adoption.
