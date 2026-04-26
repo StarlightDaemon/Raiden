@@ -30,9 +30,13 @@ The first materialized surface is intentionally small:
 - `instance/`
   - downstream `RAIDEN Instance` structure and prompt-mapping docs
 - `updater/`
-  - first local CLI updater for `Edict` package to downstream `Writ` updates
+  - first local CLI installer/update backend for `Edict` package to downstream
+    `Writ` install/update operations, plus the first shared installer service
+    layer, dependency-free local web API backend, and a browser-local frontend
+    scaffold under `toolkit/updater/web/`
 - `guide/`
-  - step-by-step helper for trying the current install and updater flow
+  - step-by-step helper for trying the current installer flow, including
+    update-mode installs and legacy-artifact review
 
 ## Current Non-Goals
 
@@ -42,6 +46,7 @@ This subtree does not yet settle:
 - package manifest extensions beyond the current local CLI contract
 - package publish mechanics
 - remote distribution
+- native OS GUI variants for installer/operator work
 
 Those remain governed by root canon until later package or distribution work is
 promoted.

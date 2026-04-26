@@ -77,6 +77,9 @@ RAIDEN is not yet a finished toolkit implementation. It is currently a structure
 - `.raiden/instance/metadata.json` and `.raiden/instance/baseline.json` are now the first named files inside the reserved instance support area
 - updater Tier 2 canon now promotes the package-manifest field set, core `MAJOR.MINOR.PATCH` version comparison semantics, the refined anomaly threshold rule, and a safe auto-removal path for baseline-tracked unchanged managed files (D-0033)
 - updater instance-side metadata and installed-baseline field contracts are now promoted for the current local CLI updater, including strict unknown-field rejection and an initial-install-only missing-baseline policy (D-0034)
+- the installer direction is now fixed as a local web operator surface with no native OS GUI target, and install/update is now treated as one installer surface with update mode (D-0035)
+- the updater package now includes a shared installer service layer and a dependency-free local web API backend so future browser UI work can reuse canonical init/plan/apply behavior instead of forking it
+- the first local web installer UI scaffold now exists under `toolkit/updater/web/`, connected to the local JSON API for scan, init preview/apply, plan, apply, doctor, and native folder-selection convenience
 
 ## Current Canonical Source Map
 
@@ -91,12 +94,13 @@ The working concept ownership is now:
 
 ## In Progress
 
-- None active. The first updater MVP is complete and tested. Remaining updater canon work is now limited to broader metadata extensions and package/distribution questions beyond the promoted local CLI surface.
+- None active. The first updater MVP is complete and tested. The operator-surface direction is now fixed to local web, while remaining updater canon work stays limited to broader metadata extensions and package/distribution questions beyond the promoted local CLI surface.
 
 ## Temporarily On Hold
 
 - metadata extensions beyond the current local CLI contract, downgrade policy, and prerelease/build version metadata remain outside the current promoted updater surface
 - broader updater-shape canon beyond the current MVP scope is deferred until real downstream usage provides feedback
+- native OS GUI variants for the installer/operator surface are out of current scope
 
 ## Not Yet Done
 
@@ -138,5 +142,5 @@ The working concept ownership is now:
 
 ## Last Updated
 
-- Date: 2026-04-25
+- Date: 2026-04-26
 - Confidence: High

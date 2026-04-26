@@ -11,9 +11,21 @@ baseline fields are also current local CLI canon after validation hardening.
 
 ## Purpose
 
-A local CLI tool that updates the managed core (`.raiden/writ/`) of a
-downstream `RAIDEN Instance` from an `Edict` package, while preserving
-local overlay and live state.
+A local CLI installer/update tool that installs or refreshes the managed core
+(`.raiden/writ/`) of a downstream `RAIDEN Instance` from an `Edict` package,
+while preserving local overlay and live state.
+
+The same package now also contains the first shared installer service layer for
+future local web UI work:
+
+- `raiden_updater/installer.py`
+  - shared repo scan, init preview, init apply, and doctor services
+- `raiden_updater/server.py`
+  - dependency-free local JSON API wrapper for web UI development
+- `raiden_updater/cli.py`
+  - local CLI surface for direct operator use and engine verification
+- `web/`
+  - local browser UI scaffold for install/update operator flow
 
 ## Canon-Backed Contract
 
@@ -30,7 +42,7 @@ This updater enforces the four-point update contract from `D-0016` and
 
 ### plan
 
-Produce a dry-run report without mutating the filesystem.
+Produce a dry-run install/update report without mutating the filesystem.
 
 ```
 py -m raiden_updater.cli plan --instance <path> --package <path>
@@ -47,7 +59,7 @@ Output includes:
 
 ### apply
 
-Execute the update only if the plan is conflict-free.
+Execute the install or update only if the plan is conflict-free.
 
 ```
 py -m raiden_updater.cli apply --instance <path> --package <path>
@@ -64,6 +76,24 @@ Missing `baseline.json` is allowed only for an initial install into a fresh
 managed root with no existing files. If `.raiden/writ/` already contains files,
 the updater blocks because it cannot prove whether those files were locally
 modified.
+
+## Local Web Backend
+
+The current local web backend is intentionally narrow and wraps existing
+installer/update logic rather than reimplementing it.
+
+Current endpoints:
+
+- `POST /api/scan`
+- `POST /api/init-preview`
+- `POST /api/init-apply`
+- `POST /api/plan`
+- `POST /api/apply`
+- `POST /api/doctor`
+- `POST /api/select-folder`
+
+This server is a backend foundation for a browser-first local operator surface,
+not a separate updater engine.
 
 ## Data Models
 

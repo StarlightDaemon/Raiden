@@ -109,7 +109,10 @@ The following are not required before broader updater canon resumes:
 - final updater command surface
 - exact package archive format
 - remote distribution mechanics
-- GUI or drag-and-drop update flow
+- native OS GUI or drag-and-drop update flow
+
+Current operator-surface direction instead favors a local web UI, which is now
+tracked separately from native GUI scope by D-0035.
 
 Those belong to later updater-shape or package/distribution canon.
 

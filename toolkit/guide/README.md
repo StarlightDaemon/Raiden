@@ -3,16 +3,17 @@
 ## Purpose
 
 This directory contains a small operator-facing guide and helper script for
-trying the current RAIDEN local CLI flow end to end.
+trying the current RAIDEN local CLI installer flow end to end.
 
 It is a step-by-step surface for:
 
 - creating a downstream `RAIDEN Instance` skeleton in a target repo
+- detecting legacy repo-agent surfaces that need review
 - installing a package payload into `.raiden/writ/`
-- running the updater plan/apply flow
+- running installer plan/apply flow, including update-mode installs
 - checking the resulting instance shape
 
-This guide uses the current local CLI updater contract. It does not define
+This guide uses the current local CLI installer contract. It does not define
 package distribution, remote publishing, or broader updater metadata.
 
 ## Quick Start
@@ -86,6 +87,13 @@ The `init` command creates only the current required downstream shape:
 ```
 
 `baseline.json` is written by the updater after a successful install or update.
+
+If legacy repo-agent surfaces such as an older root `AGENTS.md`,
+`agent-ledger/`, or `agent-prompts/` are detected, the guide:
+
+- preserves the old root `AGENTS.md` under `.raiden/local/legacy/`
+- writes `.raiden/state/LEGACY_REVIEW.md`
+- adds a legacy review reminder to local state and read order
 
 ## Safety Rules
 

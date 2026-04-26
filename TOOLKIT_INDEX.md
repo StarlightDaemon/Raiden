@@ -111,8 +111,11 @@ Its current scope is intentionally narrow:
 - `toolkit/instance/`
   - downstream `RAIDEN Instance` structure and prompt-mapping docs
 - `toolkit/updater/`
-  - first updater MVP: local CLI with `plan` and `apply` commands for
-    managed-core updates sourced from `Edict` packages (D-0032)
+  - first installer/update MVP backend: local CLI with `plan` and `apply`
+    commands for managed-core install/update operations sourced from `Edict`
+    packages, plus the first shared installer service layer and dependency-free
+    local web API backend for the future browser UI, alongside the first local
+    web frontend scaffold under `toolkit/updater/web/` (D-0032, D-0035)
 - `toolkit/guide/`
   - step-by-step operator helper for initializing a downstream
     `RAIDEN Instance` and running the current local install/update flow
@@ -156,6 +159,7 @@ This file does not yet define:
   contract
 - downgrade policy or prerelease/build version metadata semantics
 - packaging/publish mechanics
+- native OS GUI variants for the installer/operator surface
 
 Those remain dependent on:
 
@@ -180,6 +184,7 @@ Use this file when:
 - physical toolkit subtree: initially materialized
 - first-pass downstream instance folder structure: defined
 - first updater shape: defined (local CLI under `toolkit/updater/`, D-0032)
+- operator UI direction: defined as local web, with no native GUI target in current scope (D-0035)
 - updater package manifest surface: defined for the current local CLI
 - core version comparison semantics: defined for the current local CLI
 - instance support metadata: current local CLI contract defined for

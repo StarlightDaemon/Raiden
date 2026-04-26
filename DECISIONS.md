@@ -292,3 +292,11 @@
   - unknown extra fields in these current local CLI metadata files are rejected rather than ignored
   - if `baseline.json` is missing while `.raiden/writ/` already contains files, planning blocks with `missing_baseline`; a missing baseline is accepted only when the managed root is empty or absent
   - broader metadata extensions, multiple managed roots, downgrade policy, prerelease/build metadata, and package/distribution mechanics remain outside this promoted surface
+
+## D-0035
+
+- Date: 2026-04-26
+- Status: Active
+- Decision: the RAIDEN operator installation surface will target a local web UI, not native OS GUI variants, and install/update behavior should be treated as one installer surface with update mode rather than as separate products.
+- Rationale: RAIDEN's operator workflow is repo-centric, cross-platform, and review-heavy. A local web surface is the best fit for repo scanning, legacy-artifact review, managed-versus-local inspection, plan previews, and conflict handling without maintaining separate Windows, macOS, and Linux GUI stacks.
+- Implementation note: keep filesystem and package logic in local backend or CLI surfaces, keep the operator interaction model browser-first on localhost, and leave native GUI packaging out of current scope unless canon changes later.

@@ -1,4 +1,4 @@
-"""RAIDEN Updater CLI — plan and apply managed-core updates.
+"""RAIDEN installer/update CLI — plan and apply managed-core installation.
 
 Usage::
 
@@ -23,7 +23,7 @@ def _format_plan(plan) -> str:  # noqa: ANN001
     """Format a PlanResult for human-readable terminal output."""
     lines: list[str] = []
     lines.append("=" * 60)
-    lines.append("RAIDEN Updater — Plan Result")
+    lines.append("RAIDEN Installer/Updater — Plan Result")
     lines.append("=" * 60)
 
     lines.append(f"Compatible:         {plan.compatible}")
@@ -110,13 +110,13 @@ def main(argv: list[str] | None = None) -> int:
     """CLI entry point."""
     parser = argparse.ArgumentParser(
         prog="raiden-updater",
-        description="RAIDEN Updater MVP — managed-core update CLI",
+        description="RAIDEN installer/update MVP — managed-core install CLI",
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     # plan
     plan_parser = subparsers.add_parser(
-        "plan", help="Produce a dry-run update plan (no mutations)"
+        "plan", help="Produce a dry-run install/update plan (no mutations)"
     )
     plan_parser.add_argument(
         "--instance", required=True,
@@ -129,7 +129,7 @@ def main(argv: list[str] | None = None) -> int:
 
     # apply
     apply_parser = subparsers.add_parser(
-        "apply", help="Apply an update (only if plan is conflict-free)"
+        "apply", help="Apply an install/update (only if plan is conflict-free)"
     )
     apply_parser.add_argument(
         "--instance", required=True,
