@@ -31,6 +31,8 @@ The first materialized surface is intentionally small:
   - downstream `RAIDEN Instance` structure and prompt-mapping docs
 - `updater/`
   - first local CLI updater for `Edict` package to downstream `Writ` updates
+- `guide/`
+  - step-by-step helper for trying the current install and updater flow
 
 ## Current Non-Goals
 

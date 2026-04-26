@@ -113,6 +113,9 @@ Its current scope is intentionally narrow:
 - `toolkit/updater/`
   - first updater MVP: local CLI with `plan` and `apply` commands for
     managed-core updates sourced from `Edict` packages (D-0032)
+- `toolkit/guide/`
+  - step-by-step operator helper for initializing a downstream
+    `RAIDEN Instance` and running the current local install/update flow
 
 This first surface is meant to:
 
