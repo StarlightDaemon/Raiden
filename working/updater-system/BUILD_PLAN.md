@@ -1,5 +1,14 @@
 # RAIDEN Updater System Build Plan
 
+## Status
+
+This is a retained non-canonical draft.
+
+Do not treat it as an active plan.
+
+Updater planning and build work are paused until RAIDEN is materially closer to
+a v1 release state.
+
 ## Purpose
 
 This is a non-canonical implementation planning artifact for the first RAIDEN updater build.
@@ -8,7 +17,8 @@ It translates the current RAIDEN canon into a narrow build target for an impleme
 
 ## 1. Current Working Judgment
 
-The first updater should be built as a local CLI that consumes a manifest-driven managed-core package for the `Edict`.
+The first updater should be built as a local CLI that consumes a manifest-driven
+`Edict` package and updates the downstream `Writ`.
 
 That choice is the narrowest implementation that satisfies current canon:
 

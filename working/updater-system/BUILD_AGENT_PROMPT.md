@@ -1,10 +1,19 @@
 # RAIDEN Updater Build Agent Prompt
 
+## Status
+
+This is a retained non-canonical draft prompt.
+
+Do not use it for current execution.
+
+Updater planning and build work are paused until RAIDEN is materially closer to
+a v1 release state.
+
 Token-lean internal build prompt for the first RAIDEN updater MVP.
 
 ```text
 Mode: impl
-Obj: build the first practical RAIDEN updater MVP as a local CLI for Edict managed-core updates
+Obj: build the first practical RAIDEN updater MVP as a local CLI for Writ managed-core updates sourced from Edict packages
 Scope: current canon + smallest reasonable implementation surface
 Read:
 - /mnt/e/RAIDEN/SOURCE_OF_TRUTH.md

@@ -3,6 +3,18 @@
 Use this as the working prompt for a bounded agent pass on the current
 `toolkit/edict/` surface.
 
+Recommended runtime:
+
+- choose the model and reasoning level before launch
+- assume the run is model-bound and reasoning-bound unless the host explicitly
+  proves otherwise
+- prefer a moderate-to-high reasoning implementation pass for canon-sensitive
+  doc/build work
+- if the first pass fails materially, start a new pass with stronger settings
+  rather than planning around mid-run switching
+
+Use the fenced block below as the exact copyable prompt body.
+
 ```text
 Mode: impl
 Obj: make toolkit/edict materially real with the smallest useful package skeleton/example

@@ -1,47 +1,60 @@
 # RAIDEN Session Pause Point
 
 ```text
-Obj: tighten RAIDEN's own operating stack for token efficiency, continuity, and reusable execution discipline
+Obj: align RAIDEN continuity and updater-deferral docs, then add a progressive reasoning-escalation rule that stays vendor-neutral in canon
+Success: continuity docs agree on current phase and active work; updater work is clearly deferred until RAIDEN is materially closer to a v1 release state; prompt governance carries a host-neutral escalation rule with host-specific profiles allowed
+Stop: session close-out after doc alignment and policy capture
 Phase: pause-point export
 Scope:
-- /mnt/e/RAIDEN/OPERATING_INTENT.md
-- /mnt/e/RAIDEN/DECISIONS.md
-- /mnt/e/RAIDEN/CURRENT_STATE.md
-- /mnt/e/RAIDEN/PROMPT_ASSET_INDEX.md
-- /mnt/e/RAIDEN/toolkit/prompts/
-- /mnt/e/RAIDEN/toolkit/instance/
-- /mnt/e/RAIDEN/working/current-task-set/
-- /mnt/e/RAIDEN/working/updater-system/BUILD_AGENT_PROMPT.md
+- repo: /mnt/e/raiden
+- paths:
+  - /mnt/e/raiden/AGENTS.md
+  - /mnt/e/raiden/CURRENT_STATE.md
+  - /mnt/e/raiden/DECISIONS.md
+  - /mnt/e/raiden/OPEN_LOOPS.md
+  - /mnt/e/raiden/PAST_PRESENT_FUTURE.md
+  - /mnt/e/raiden/RAIDEN_NEXT_STEP_WORKING_PLAN.md
+  - /mnt/e/raiden/RELEASE_READY_CHECKLIST.md
+  - /mnt/e/raiden/WORKBOOK.md
+  - /mnt/e/raiden/toolkit/prompts/GOVERNANCE.md
+  - /mnt/e/raiden/working/updater-system/
+  - /mnt/e/raiden/working/current-task-set/2026-04-20__session_pause_point.md
 Done:
-- added canonical execution-policy decisions for opaque token limits, model-bound cycles, and readable-vs-compressed surfaces
-- added compact central prompt templates for task, pause-point, continuation, validation, and review
-- refactored major internal working prompts to the compact internal standard
-- preserved the foundational operating-brief prompt in Source_info and indexed it
-- promoted a concise canonical mission layer into OPERATING_INTENT.md
-- updated root navigation docs to include the new operating-intent layer
+- aligned continuity docs around the current phase: canonicalization and release-preparation
+- aligned updater wording so canon consistently says updater work is deferred until RAIDEN is materially closer to a v1 release state
+- marked the root `RAIDEN_NEXT_STEP_WORKING_PLAN.md` as a historical draft rather than an active updater-first plan
+- marked `working/updater-system/` materials as retained non-canonical drafts, not an active build plan
+- corrected continuity drift in `PAST_PRESENT_FUTURE.md` so present/future sections no longer reopen already-completed downstream work
+- updated `RELEASE_READY_CHECKLIST.md` so root continuity agreement is marked `Done`
+- added D-0030 in `DECISIONS.md` for progressive reasoning escalation after observed failure or rerun pressure
+- added a host-neutral reasoning-escalation rule in `toolkit/prompts/GOVERNANCE.md`
+- softened the prompt-layer rule so RAIDEN allows host-specific profiles for OpenAI, Claude, Gemini, and other environments instead of pretending one provider default fits all work
 Open:
-- review remaining long internal working prompts for compression opportunities
-- decide whether OPERATING_INTENT.md needs a supporting decision entry or whether root-canon status is sufficient
-- decide whether a standard local pause-point filename/layout should be canonized for downstream RAIDEN Instance use
+- continue release-prep documentation where it reduces package and compatibility ambiguity
+- keep future evidence intake narrow and policy-driven
+- reassess prototype retirement readiness later; none of the retained snapshots are ready to retire yet
+- add host-specific execution-profile companion guidance only if repeated operational use shows that it is worth canonizing outside local prompts
 Dec:
-- root canon stays readable
-- internal execution layers may be compressed when operationally lossless
-- assume agents are token-blind by default
-- assume cycles are model-bound unless environment support is explicit
+- updater planning and build work remain paused until RAIDEN is materially closer to a v1 release state
+- continuity alignment is now strong enough that the release checklist marks root continuity agreement as done
+- root canon stays vendor-neutral on model family defaults
+- prompt governance may define host-specific baseline profiles and escalation paths
+- the reasoning rule is progressive: start from a bounded moderate baseline, then escalate after material failure rather than rerunning the same weak pass
 Val:
-- policy/template stack reviewed for consistency
-- root navigation updated
+- continuity docs reread against root canon and release checklist
+- `git diff --check` passed during the session after policy/doc updates
 - no code tests run; docs/template changes only
 Blk:
 - none
 Next:
-- start from OPERATING_INTENT.md, DECISIONS.md, CURRENT_STATE.md, and toolkit/prompts/GOVERNANCE.md
-- review remaining internal prompts and decide what additional compact conversions are worth doing
+- start from `CURRENT_STATE.md`, `OPEN_LOOPS.md`, `PAST_PRESENT_FUTURE.md`, `RELEASE_READY_CHECKLIST.md`, and `DECISIONS.md`
+- continue narrow release-prep documentation work
+- if host-specific prompt behavior needs more standardization, add companion profile guidance under shared prompts or another clearly non-root governed surface
 Alt:
-- if mission-layer refinement is not needed next, switch to downstream RAIDEN Instance adoption details for pause-point and continuation storage
+- if no doc clarification is needed next, do a bounded retirement-readiness or evidence-intake discipline review instead
 Trim:
 - stale exploration removed
 - verbose chat history not required
 - unrelated source material not needed for restart
-- superseded reasoning replaced by canonical policy and this pause-point
+- superseded updater-first planning replaced by current canon and this pause-point
 ```

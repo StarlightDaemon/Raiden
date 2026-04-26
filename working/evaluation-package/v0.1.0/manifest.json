@@ -1,0 +1,30 @@
+{
+  "package_type": "edict",
+  "edict_version": "0.1.0",
+  "compatible_instance_schemas": [
+    "1"
+  ],
+  "managed_files": [
+    {
+      "path": "core_rules.md",
+      "hash": "838631282fcd4aeeba16582a20124a25bfef05d7e3e803a84de25b198f3ef10d"
+    },
+    {
+      "path": "README.md",
+      "hash": "d2255cdab5fed6060ebe802e0113b6a95b630f6d78b4ac4966dffd65b4b50a38"
+    },
+    {
+      "path": "transient_cache.txt",
+      "hash": "a1968b641ed7ac94dc9d5ba57ac31275120df6d83fce51b6ed0679953cc3c0dc"
+    },
+    {
+      "path": "config/defaults.json",
+      "hash": "b14615b3b3db66ec3a15aa70898d9575c46b0abc10f71be4954f0890c07e0c23"
+    },
+    {
+      "path": "templates/default.md",
+      "hash": "2fb8ea4132faa481ea4c9b95aafe9409c4268a9b836d1027be4b6481a5ba496e"
+    }
+  ],
+  "created_at": "2026-04-24T21:00:00Z"
+}
