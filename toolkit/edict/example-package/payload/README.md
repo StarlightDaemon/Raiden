@@ -30,5 +30,5 @@ These do not belong in this payload example:
 - local continuity state
 - updater metadata files with canonized field names
 
-Those belong under `.raiden/local/`, `.raiden/state/`, or later deferred
-instance-support material under `.raiden/instance/`.
+Those belong under `.raiden/local/`, `.raiden/state/`, or instance-support
+material under `.raiden/instance/`.

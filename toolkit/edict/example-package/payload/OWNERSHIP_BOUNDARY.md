@@ -13,7 +13,7 @@ with the `Writ`.
 
 - `.raiden/local/` overlay materials
 - `.raiden/state/` live continuity files
-- `.raiden/instance/` deferred install/update metadata files
+- `.raiden/instance/` install/update support metadata
 - repo-specific prompts, context, or exceptions
 
 ## Use Rule
