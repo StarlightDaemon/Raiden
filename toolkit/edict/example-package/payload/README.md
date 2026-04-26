@@ -1,4 +1,4 @@
-# Edict Managed Core
+# Writ Managed Core
 
 ## Purpose
 
@@ -7,7 +7,7 @@ This directory represents the installed managed-core payload of the example
 
 In a downstream `RAIDEN Instance`, this directory maps to:
 
-- `.raiden/edict/`
+- `.raiden/writ/`
 
 Everything here is RAIDEN-managed core, not local overlay and not local live
 state.
@@ -16,7 +16,7 @@ state.
 
 | File | Role |
 |---|---|
-| `README.md` | installed index for the managed `Edict` |
+| `README.md` | installed index for the managed `Writ` |
 | `OPERATING_RULES.md` | minimal centrally owned operating-law example |
 | `OWNERSHIP_BOUNDARY.md` | minimal centrally owned managed-vs-local reminder |
 

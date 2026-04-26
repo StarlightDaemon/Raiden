@@ -26,7 +26,7 @@ the managed payload itself.
 For current canon, the default position is:
 
 - managed payload:
-  `.raiden/edict/` after install
+  `.raiden/writ/` after install
 - package-adjacent release-support materials:
   central package-side materials next to the payload rather than inside it
 
@@ -34,7 +34,7 @@ Working interpretation:
 
 - the managed payload should stay focused on RAIDEN-owned installed core files
 - release notes and migration notes may accompany a package revision
-- those notes should not be assumed to install into `.raiden/edict/` by
+- those notes should not be assumed to install into `.raiden/writ/` by
   default
 
 ## When Package-Adjacent Is The Right Default
@@ -43,7 +43,7 @@ Package-adjacent positioning is the correct default when the note:
 
 - explains a release transition rather than defining installed managed law
 - is relevant only for certain upgrades or revisions
-- would create clutter inside `.raiden/edict/` after installation
+- would create clutter inside `.raiden/writ/` after installation
 - is mainly for operator or updater-facing review rather than steady-state use
 
 ## When In-Payload Placement Might Later Be Justified
@@ -51,7 +51,7 @@ Package-adjacent positioning is the correct default when the note:
 In-payload placement might later be justified if a note is:
 
 - meant to remain part of the installed managed core after the transition
-- required for steady-state interpretation of the installed `Edict`
+- required for steady-state interpretation of the installed `Writ`
 - centrally owned guidance that should persist across normal downstream use
 
 That remains conditional until later updater and release canon.
@@ -75,7 +75,7 @@ When deciding where a release-support note belongs, ask:
 
 1. Is this note about an installed steady-state managed file, or about a
    transition between package revisions?
-2. Should a downstream repo still keep this note inside `.raiden/edict/` after
+2. Should a downstream repo still keep this note inside `.raiden/writ/` after
    the transition is complete?
 3. Would placing it in the payload blur the boundary between managed core and
    release-support scaffolding?

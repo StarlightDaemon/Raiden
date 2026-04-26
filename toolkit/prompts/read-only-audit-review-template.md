@@ -12,7 +12,17 @@ read-only audit and structural review of the current repository state.
 This template is especially well suited to stronger long-context review models
 such as Gemini 3.1 Pro, but the review method is not Gemini-specific.
 
+## Runtime Notes
+
+- choose the model and reasoning level before launch
+- assume the run is model-bound and reasoning-bound unless the host explicitly
+  proves otherwise
+- do not plan around mid-run switching
+- keep the filled-in prompt body below as the exact copyable execution text
+
 ## Template
+
+Use the fenced block below as the exact copyable prompt body.
 
 ```text
 You are a read-only audit and review agent working against the current

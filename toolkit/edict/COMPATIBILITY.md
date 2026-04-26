@@ -1,18 +1,18 @@
-# Edict Compatibility Surface
+# Edict To Writ Compatibility Surface
 
 ## Purpose
 
-This document defines the current high-level compatibility surface for a managed
-`Edict` package.
+This document defines the current high-level compatibility surface for a
+managed `Edict` package and the `Writ` it installs.
 
-It exists to reduce release-preparation ambiguity before updater canon resumes.
+It exists to reduce release-preparation ambiguity around package compatibility
+without broadening beyond the current local CLI updater contract.
 
 It does not define:
 
 - exact compatibility markers
-- version comparison rules
-- manifest field names
-- downgrade policy
+- downgrade policy beyond the current core `MAJOR.MINOR.PATCH` comparison
+- package manifest extensions beyond the current updater contract
 - updater commands
 
 ## Core Rule
@@ -21,17 +21,17 @@ Compatibility work for `Edict` should focus first on what must remain coherent
 between:
 
 - the central package-side `Edict` surface
-- the installed `.raiden/edict/` managed core
+- the installed `.raiden/writ/` managed core
 - the surrounding `RAIDEN Instance` layer contract
 
-At this stage, RAIDEN needs compatibility categories and boundaries, not final
-comparison mechanics.
+At this stage, RAIDEN needs compatibility categories and boundaries, while the
+current local CLI contract supplies only the first concrete comparison rules.
 
 ## Compatibility Questions RAIDEN Must Eventually Answer
 
-Future updater and release canon will need to answer at least these questions:
+Future package and release canon will need to answer at least these questions:
 
-1. Can this package shape install into the expected `.raiden/edict/` location
+1. Can this package shape install into the expected `.raiden/writ/` location
    without violating the current instance structure?
 2. Does this package still respect the managed-vs-local contract and avoid
    pulling local overlay or live-state material into managed core?
@@ -51,7 +51,7 @@ current downstream instance structure.
 
 High-level concerns:
 
-- the installed payload still belongs under `.raiden/edict/`
+- the installed payload still belongs under `.raiden/writ/`
 - the package does not assume local-only paths are managed-core payload
 - the package does not require unresolved project-adjacent deployment shapes
 
@@ -86,7 +86,7 @@ installed managed-core surface for downstream repos.
 
 High-level concerns:
 
-- an installed `.raiden/edict/` still has a clear managed index
+- an installed `.raiden/writ/` still has a clear managed index
 - managed guidance remains interpretable after package changes
 - later release work can identify when a change is a normal refresh versus a
   structural shift
@@ -118,7 +118,7 @@ Use this document when:
 For current release-preparation work, a package surface is compatible enough to
 keep moving if all of the following are true:
 
-- it maps cleanly to `.raiden/edict/`
+- it maps cleanly to `.raiden/writ/`
 - it does not absorb `.raiden/local/` or `.raiden/state/` materials
 - it does not depend on unresolved manifest or updater behavior
 - its managed files are clearly RAIDEN-owned
@@ -130,10 +130,11 @@ This is a release-prep threshold, not a final install/update rule.
 The following remain intentionally deferred:
 
 - exact compatibility marker shape
-- exact versioning and comparison semantics
+- versioning and comparison extensions beyond the current core
+  `MAJOR.MINOR.PATCH` comparison
 - downgrade and rollback policy
-- baseline/install-state record format
+- baseline/install-state extensions beyond the current updater contract
 - migration-record format
 - release artifact format
 
-Those belong to later updater and metadata canon.
+Those belong to later package, updater, and metadata canon.

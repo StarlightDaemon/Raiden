@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This directory is the first concrete example of what a managed `Edict` package
+This directory is the first concrete example of what a central `Edict` package
 could look like before manifest mechanics, updater commands, and archive format
 are canonized.
 
@@ -27,7 +27,7 @@ toolkit/edict/example-package/
 
 - `README.md` explains the example from the central RAIDEN package side
 - `payload/` represents the files that would install into the managed
-  downstream `Edict`
+  downstream `Writ`
 - `payload/README.md` is the installed index for the managed core
 - `payload/OPERATING_RULES.md` is a minimal managed law/rules artifact
 - `payload/OWNERSHIP_BOUNDARY.md` is a minimal managed ownership guide
@@ -37,7 +37,7 @@ toolkit/edict/example-package/
 This example maps as follows:
 
 - `toolkit/edict/example-package/payload/`
-  -> `.raiden/edict/`
+  -> `.raiden/writ/`
 
 That means the example package root is central/package-side only, while the
 `payload/` subtree is the installed managed-core surface.
@@ -46,7 +46,7 @@ That means the example package root is central/package-side only, while the
 
 This example does not define:
 
-- exact manifest field names
+- package manifest extensions beyond the current updater contract
 - updater commands or conflict behavior beyond existing canon
 - final archive or bundle format
 - `.raiden/local/` contents

@@ -1,12 +1,15 @@
-# Edict Lifecycle
+# Edict Package Lifecycle
 
 ## Purpose
 
-This document describes the current high-level lifecycle of a managed `Edict`
-package without defining the updater implementation or manifest schema.
+This document describes the current high-level lifecycle of a central `Edict`
+package without defining package distribution mechanics.
 
-It gives RAIDEN a shared vocabulary for package-state discussions before the
-full updater shape is canonized.
+It gives RAIDEN a shared vocabulary for package-state discussions around the
+current local CLI updater surface and later package/distribution work.
+
+`Edict` is the central package-side surface. `Writ` is the installed
+downstream issued form.
 
 ## Lifecycle Stages
 
@@ -58,8 +61,8 @@ Typical signs that a package is in `Candidate`:
 
 ### 3. Release-Ready
 
-The package surface is stable enough that an updater or installer could target
-it once the remaining metadata and compatibility canon exists.
+The package surface is stable enough that the current local CLI updater can
+target it, while broader package and distribution mechanics remain deferred.
 
 Release-ready does not mean released. It means:
 
@@ -69,25 +72,26 @@ Release-ready does not mean released. It means:
 
 For current RAIDEN canon, `Release-Ready` also means:
 
-- the managed payload has a real example surface that a later updater could
+- the managed payload has a real example surface that the local CLI updater can
   target
 - package-to-instance mapping is explicit
-- compatibility questions are described clearly enough that later updater work
+- compatibility questions are described clearly enough that later package work
   will not need to rediscover the package boundary from scratch
 - release-prep review no longer depends on naming or prompt-home ambiguity
 
 `Release-Ready` does not yet require:
 
-- final manifest schema
+- package manifest extensions beyond the current updater contract
 - final package archive format
-- exact version comparison rules
+- final downgrade policy or prerelease/build version semantics
 - final updater command surface
 
-Those remain later updater-shape concerns.
+Those remain later package and distribution concerns.
 
 ### 4. Installed
 
-A downstream `RAIDEN Instance` is using a released `Edict` managed core.
+A downstream `RAIDEN Instance` is using a released `Writ` issued from an
+`Edict`.
 
 At this stage, the managed core must remain distinct from:
 
@@ -96,10 +100,11 @@ At this stage, the managed core must remain distinct from:
 
 ### 5. Updated
 
-A later managed-core revision replaces or refreshes the installed one under the
-managed-vs-local contract.
+A later managed `Writ` revision replaces or refreshes the installed one under
+the managed-vs-local contract.
 
-The exact update mechanism is still deferred, but any future updater must:
+The current local CLI updater is the first concrete update mechanism. Any
+future updater shape must still:
 
 - update managed core
 - preserve local overlay
@@ -108,8 +113,9 @@ The exact update mechanism is still deferred, but any future updater must:
 
 ### 6. Replaced Or Retired
 
-An older managed package revision may later be superseded or retired once
-package/update rules are mature enough to support that safely.
+An older `Edict` package revision or issued `Writ` revision may later be
+superseded or retired once package/update rules are mature enough to support
+that safely.
 
 ## Current Release Threshold
 
@@ -117,10 +123,11 @@ For the current `toolkit/edict/` surface, the practical release-prep threshold
 is:
 
 1. a real managed payload example exists
-2. managed ownership is explicit
-3. package-to-instance mapping is explicit
-4. compatibility categories are documented
-5. no local overlay or live-state materials are mixed into the package surface
+2. the minimum installed managed payload is explicit
+3. managed ownership is explicit
+4. package-to-instance mapping is explicit
+5. compatibility categories are documented
+6. no local overlay or live-state materials are mixed into the package surface
 
 If one of those is still missing, the package surface is not yet
 `Release-Ready` in the current canon sense even if it looks structurally
@@ -128,6 +135,32 @@ plausible.
 
 Use `RELEASE_REVIEW_CHECKLIST.md` for a compact review pass over that
 threshold.
+
+## Current Canon Assessment
+
+The current `toolkit/edict/` package surface should presently be treated as
+`Release-Ready` in the current RAIDEN release-prep sense.
+
+Why this assessment currently holds:
+
+- a real managed payload example exists under `example-package/payload/`
+- the minimum installed managed payload is explicit in `MINIMUM_PAYLOAD.md`
+- managed ownership and managed-versus-local boundaries are explicit
+- package-to-instance mapping is explicit
+- compatibility categories are documented
+- release-support positioning is explicit
+- no obvious local-only material has leaked into the managed payload
+
+This assessment is intentionally narrow.
+It means later package or updater work does not need to rediscover the present managed
+package target from scratch.
+
+It does not mean RAIDEN has already settled:
+
+- release artifact format
+- migration-record shape
+- rollback behavior
+- updater command behavior
 
 ## What Release Language Must Not Pretend Yet
 
@@ -137,7 +170,7 @@ Current release language must not pretend that RAIDEN has already settled:
 - manifest markers
 - migration record format
 - rollback behavior
-- updater implementation details
+- updater implementation details beyond the current local CLI surface
 
 Those remain intentionally deferred.
 
@@ -154,16 +187,15 @@ Downstream repos are responsible for:
 
 - local overlay content
 - local live state content
-- not silently treating local edits as managed-core updates
+- not silently treating local edits as `Writ` updates
 
 ## Current Deferred Questions
 
 The lifecycle still leaves these unresolved:
 
-- exact version comparison rules
 - downgrade policy
-- required compatibility markers
-- baseline/install-state record shape
+- manifest extensions beyond the current updater contract
+- baseline/install-state extensions beyond the current updater contract
 - release artifact format
 
-Those belong to later updater and metadata canon, not this stage.
+Those belong to later package, updater, and metadata canon, not this stage.

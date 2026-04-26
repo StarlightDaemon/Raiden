@@ -11,7 +11,8 @@ It answers:
 - how the managed, local, and live-state layers are separated physically
 - which files and subtrees are required versus optional
 
-It does not define updater metadata fields or package archives.
+It defines the current local CLI updater metadata fields, but not broader
+metadata extensions or package archives.
 
 ## Default Root Shape
 
@@ -23,7 +24,7 @@ The default physical shape of a downstream instance is:
 ├── AGENTS.md
 └── .raiden/
     ├── README.md
-    ├── edict/
+    ├── writ/
     ├── local/
     ├── state/
     └── instance/
@@ -54,8 +55,8 @@ This preserves the strongest reusable embedded-instance pattern from
 
 - `.raiden/README.md`
   - local instance index and navigation spine
-- `.raiden/edict/`
-  - managed core owned by RAIDEN
+- `.raiden/writ/`
+  - installed managed core owned by RAIDEN
 - `.raiden/local/`
   - repo-local overlay area
 - `.raiden/state/`
@@ -69,11 +70,11 @@ This preserves the strongest reusable embedded-instance pattern from
 
 Path:
 
-- `.raiden/edict/`
+- `.raiden/writ/`
 
 Role:
 
-- the managed `Edict`
+- the issued `Writ`
 - RAIDEN-owned law and governed reusable material after deployment
 
 Should contain:
@@ -81,6 +82,19 @@ Should contain:
 - managed governance/law artifacts
 - managed shared assets intended to deploy with the instance
 - package-side materials that remain RAIDEN-owned after install
+
+Current minimum installed contents for release-prep:
+
+```text
+.raiden/writ/
+├── README.md
+├── OPERATING_RULES.md
+└── OWNERSHIP_BOUNDARY.md
+```
+
+These files are the current minimum canonical managed payload.
+See `toolkit/edict/MINIMUM_PAYLOAD.md` for the package-side definition and
+mapping.
 
 Should not contain:
 
@@ -180,13 +194,42 @@ Role:
 - reserved home for instance typing, installation state, and later
   update-support materials
 
-Current rule:
+Current files:
 
-- the directory is part of the canonical structure
-- exact filenames inside it remain deferred until updater canon resumes
+- `metadata.json`
+  - instance typing and installed version tracking
+- `baseline.json`
+  - installed-state record of managed files at last update time
+
+These files were introduced by the first updater MVP (D-0032). Their current
+field sets are now canonical for the local CLI updater.
+
+Current `metadata.json` fields:
+
+- `instance_schema_version`
+- `instance_form_type`
+- `installed_edict_version`
+- `managed_roots`
+- `overlay_roots`
+- `live_state_roots`
+
+Current `baseline.json` fields:
+
+- `installed_edict_version`
+- `installed_at`
+- `managed_files`
+
+Each baseline `managed_files` entry contains exactly:
+
+- `path`
+- `hash`
+
+Unknown extra fields in these current local CLI metadata files are rejected.
+Missing `baseline.json` is allowed only for an initial install into a fresh
+managed root with no existing files.
 
 This keeps updater-related support material out of live state and out of the
-managed `Edict` tree while still reserving a stable home for it.
+managed `Writ` tree while still reserving a stable home for it.
 
 ## Startup And Reading Order
 
@@ -217,9 +260,10 @@ The instance is a local control plane, not the whole repo.
 
 This structure does not yet define:
 
-- exact updater metadata filenames
-- exact manifest fields
-- whether all managed files deploy under `edict/` only or also project-adjacent
+- package or instance metadata extensions beyond the current local CLI updater
+  contract
+- package manifest extensions beyond the current updater contract
+- whether all managed files deploy under `writ/` only or also project-adjacent
   root paths later
 - package archive or bundle layout
 

@@ -2,12 +2,14 @@
 
 ## Purpose
 
-This directory is the first managed `Edict` package surface in the canonical
+This directory is the first central `Edict` package surface in the canonical
 RAIDEN toolkit subtree.
 
-`Edict` is the managed core artifact inside a downstream `RAIDEN Instance`.
-This directory is the central RAIDEN-side home for package-surface material that
-will later be consumed by an updater or packaging flow.
+`Edict` is the central RAIDEN-authored managed instruction/package surface.
+Its installable `payload/` becomes a downstream `Writ` inside a
+`RAIDEN Instance`.
+This directory is the central RAIDEN-side home for package-surface material
+that will later be consumed by an updater or packaging flow.
 
 ## Current Scope
 
@@ -23,7 +25,7 @@ It is the place where later work should add:
 - release-support positioning guidance
 - compact release-readiness review guidance
 - concrete package skeleton/examples that stay inside current canon
-- manifest and metadata specs once updater canon resumes
+- the current local CLI manifest contract where package-facing docs need it
 - versioned package examples later
 - updater-facing compatibility rules later
 
@@ -35,6 +37,13 @@ The first minimal package skeleton now lives at:
 
 Its role is to show the smallest useful central package-side shape before
 manifest mechanics are defined.
+
+`payload` is a technical package term for the installable subset of an `Edict`.
+After install, that payload becomes the downstream `Writ`.
+
+The current minimum canonical installed payload for release-prep is defined in:
+
+- `MINIMUM_PAYLOAD.md`
 
 Current example structure:
 
@@ -50,27 +59,46 @@ toolkit/edict/example-package/
 Working interpretation:
 
 - `example-package/` is the central package-side example root
-- `payload/` is the part that maps to installed managed-core contents
-- `payload/` maps directly to `.raiden/edict/` in a downstream `RAIDEN Instance`
+- `payload/` is the technical installable subset of an `Edict`
+- `payload/` maps directly to `.raiden/writ/` in a downstream `RAIDEN Instance`
+- the current `payload/` file set is the minimum canonical installed `Writ`
+  payload for current release-prep
 
 The example is intentionally small. It demonstrates a real managed payload
 surface without freezing:
 
-- manifest field names
+- package manifest extensions beyond the current updater contract
 - package archive format
 - updater commands
 - final internal package taxonomy beyond this example
+
+Current status in canon:
+
+- the `toolkit/edict/` surface is currently assessed as `Release-Ready` in the
+  present RAIDEN release-prep sense
+- this is a release-prep maturity assessment, not a statement that updater or
+  package metadata canon is complete
 
 ## Current Non-Goals
 
 This directory does not yet define:
 
-- exact manifest field names
+- package manifest extensions beyond the current updater contract
 - final package archive format
-- updater command behavior
-- downstream instance folder names
+- updater command behavior beyond the current local CLI surface
+- instance-side metadata extensions beyond the current local CLI contract
 
-Those remain deferred until updater-shape work resumes.
+Those remain deferred until later package, updater, or distribution work has
+direct evidence for them.
+
+## Updater MVP Connection
+
+The first updater MVP (D-0032) under `toolkit/updater/` consumes a
+`manifest.json` file at the package root adjacent to `payload/`.
+
+This manifest location now matches current updater canon for the local CLI
+surface. The broader package ecosystem beyond that narrow manifest contract
+remains intentionally deferred.
 
 ## Working Rule
 
@@ -87,12 +115,15 @@ The example package must remain clearly separate from:
 
 Use:
 
-- `PACKAGE_BOUNDARY.md` for what belongs in the managed `Edict`
+- `PACKAGE_BOUNDARY.md` for what belongs in the central `Edict` and what may
+  issue into a downstream `Writ`
 - `PACKAGE_TO_INSTANCE_MAPPING.md` for how the current central example maps to
-  installed `.raiden/edict/` and which instance paths remain outside the
+  installed `.raiden/writ/` and which instance paths remain outside the
   managed package
+- `MINIMUM_PAYLOAD.md` for the current minimum canonical installed managed-core
+  target used during release preparation
 - `COMPATIBILITY.md` for the high-level compatibility surface that later
-  updater canon must classify more precisely
+  updater and package work may classify more precisely
 - `RELEASE_NOTES_AND_MIGRATION_POSITION.md` for the current default placement
   of release-support notes relative to the managed payload
 - `LIFECYCLE.md` for how a managed package moves from draft to installed state

@@ -6,7 +6,7 @@ This directory defines the first-pass canonical structure of a downstream
 `RAIDEN Instance`.
 
 It exists to make the downstream form concrete enough for release-readiness
-preparation without freezing updater manifests or delivery mechanics too early.
+preparation without freezing updater delivery mechanics too early.
 
 ## Current Scope
 
@@ -19,9 +19,11 @@ preparation without freezing updater manifests or delivery mechanics too early.
 
 This directory does not yet define:
 
-- exact updater metadata filenames
-- package manifest field names
+- package or instance metadata extensions beyond the current local CLI updater
+  contract
+- package manifest extensions beyond the current updater contract
 - final archive/bundle format
 - remote distribution mechanics
 
-Those remain deferred until updater canon resumes.
+Those remain deferred until a later updater or package pass has direct
+evidence for them.

@@ -1,11 +1,11 @@
-# Edict Operating Rules
+# Writ Operating Rules
 
 This file is a minimal example of a RAIDEN-managed law artifact inside an
-installed `Edict`.
+installed `Writ`.
 
 ## Core Rules
 
-1. Treat files in `.raiden/edict/` as RAIDEN-managed core.
+1. Treat files in `.raiden/writ/` as RAIDEN-managed core.
 2. Put repo-specific adaptation in `.raiden/local/`, not in managed-core files.
 3. Put continuity and fast-changing operational truth in `.raiden/state/`.
 4. Treat local edits to managed-core files as exceptions that require explicit

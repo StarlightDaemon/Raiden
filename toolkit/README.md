@@ -25,21 +25,23 @@ The first materialized surface is intentionally small:
 - `prompts/`
   - shared prompt assets, cataloging, and governance owned by central RAIDEN
 - `edict/`
-  - the first managed `Edict` package surface, boundary, lifecycle docs, and a
-    minimal example package skeleton
+  - the first central `Edict` package surface, boundary, lifecycle docs, and a
+    minimal example package skeleton that maps into downstream `Writ` material
 - `instance/`
   - downstream `RAIDEN Instance` structure and prompt-mapping docs
+- `updater/`
+  - first local CLI updater for `Edict` package to downstream `Writ` updates
 
 ## Current Non-Goals
 
 This subtree does not yet settle:
 
-- exact downstream `RAIDEN Instance` folder names
-- updater metadata field names
+- updater metadata extensions beyond the current local CLI contract
+- package manifest extensions beyond the current local CLI contract
 - package publish mechanics
 - remote distribution
 
-Those remain governed by root canon until later package and updater work is
+Those remain governed by root canon until later package or distribution work is
 promoted.
 
 ## Working Rule

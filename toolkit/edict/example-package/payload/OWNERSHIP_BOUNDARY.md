@@ -1,7 +1,7 @@
-# Edict Ownership Boundary
+# Writ Ownership Boundary
 
 This file is a minimal example of a managed ownership note that would install
-with the `Edict`.
+with the `Writ`.
 
 ## Managed Core Includes
 
@@ -19,5 +19,5 @@ with the `Edict`.
 ## Use Rule
 
 If a target repo would normally need to edit a file for local reasons, that
-file is a poor candidate for the managed `Edict` payload and should stay
+file is a poor candidate for the managed `Writ` payload and should stay
 outside this package example.
