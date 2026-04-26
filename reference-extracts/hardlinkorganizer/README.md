@@ -20,7 +20,8 @@ downstream-instance structure and continuity patterns.
 
 ## Source Provenance
 
-Primary source files:
+Primary source files came from these historical paths in the retired
+`HardlinkOrganizer` snapshot:
 
 - `reference-repos/HardlinkOrganizer/AGENTS.md`
 - `reference-repos/HardlinkOrganizer/agent-ledger/README.md`
@@ -41,8 +42,8 @@ Supporting interpretation:
 ## Current Retirement Status
 
 - extracted references now exist
-- the full `HardlinkOrganizer` snapshot remains retained for now
-- `HardlinkOrganizer` is not yet retired from `reference-repos/`
+- the full `HardlinkOrganizer` snapshot was retired from `reference-repos/` on 2026-04-23
+- the extracted references in this folder are now the preferred compact RAIDEN-owned reread surface for these patterns
 
-This folder moves `HardlinkOrganizer` into the extracted-reference stage, but
-not yet full retirement.
+This folder now preserves the reusable `HardlinkOrganizer` patterns after full
+snapshot retirement.

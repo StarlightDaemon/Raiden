@@ -52,7 +52,7 @@ Do not promote directly:
 
 ## Provenance
 
-- Primary sources:
+- Primary sources from the retired `BIND` snapshot:
   - `reference-repos/BIND/docs/remediation/BIND_1.0_REMEDIATION_LEDGER.md`
 - Supporting sources:
   - `reference-reviews/BIND/REPO_TOOLING_REVIEW.md`

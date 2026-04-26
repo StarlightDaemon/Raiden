@@ -167,3 +167,66 @@ No retirement action is recommended today for:
 - `CTRL`
 - `HardlinkOrganizer`
 - `BIND`
+
+## Addendum: 2026-04-23 Reassessment
+
+### Context Change Since Original Assessment
+
+Since this assessment was written on 2026-04-18:
+
+- `CTRL` was retired from `reference-repos/` on 2026-04-23 after operator
+  approval, satisfying all 7 retirement criteria
+- updater-shape canon was explicitly deferred by operator direction
+- extract sets were completed for both `HardlinkOrganizer` and `BIND`
+- no open loop currently depends on rereading either raw snapshot
+- the canonical toolkit surface advanced past the active comparison stage
+
+### Updated Assessment Matrix
+
+| Repo | 1 | 2 | 3 | 4 | 5 | 6 | 7 | Current State | Judgment |
+|---|---|---|---|---|---|---|---|---|---|
+| `CTRL` | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Retired | retired 2026-04-23 |
+| `HardlinkOrganizer` | Yes | Yes | Yes | Yes | Yes | Yes | No | State 2 | retirement-eligible |
+| `BIND` | Yes | Yes | Yes | Yes | Yes | Yes | No | State 2 | retirement-eligible |
+
+### Reassessment Rationale
+
+The original assessment held that raw reread was still plausible because
+active toolkit-surface and updater work intersected with these repos'
+raw layouts. That blocker has weakened because:
+
+1. updater work is explicitly deferred
+2. extract coverage is now complete for the primary patterns
+3. canon has advanced to the point where the remaining comparison
+   value is marginal rather than active
+
+The remaining marginal reread value (governance wording comparison, terms
+control, drift-report structure, sidecar layout details) does not justify
+indefinite retention given that extracts and canon now preserve the primary
+patterns.
+
+### Updated Recommendation
+
+- `CTRL`: already retired
+- `HardlinkOrganizer`: retirement-eligible; recommend operator approval
+- `BIND`: retirement-eligible; recommend operator approval
+
+See `REFERENCE_REPO_DISPOSITION_REGISTER.md` for the unified register
+covering all repos including those outside this assessment's original scope.
+
+## Addendum: 2026-04-23 Operator Approval And Retirement
+
+Operator approval was later granted on 2026-04-23 for both remaining
+retirement-eligible repos in this assessment.
+
+### Final Status Matrix
+
+| Repo | 1 | 2 | 3 | 4 | 5 | 6 | 7 | Current State | Judgment |
+|---|---|---|---|---|---|---|---|---|---|
+| `CTRL` | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Retired | retired 2026-04-23 |
+| `HardlinkOrganizer` | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Retired | retired 2026-04-23 |
+| `BIND` | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Retired | retired 2026-04-23 |
+
+### Final Note
+
+This assessment's repo set is now fully retired from `reference-repos/`.

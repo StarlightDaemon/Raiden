@@ -60,7 +60,7 @@ Do not promote directly:
 
 ## Provenance
 
-- Primary sources:
+- Primary sources from the retired `BIND` snapshot:
   - `reference-repos/BIND/.governance/README.md`
 - Supporting sources:
   - `reference-reviews/BIND/REPO_TOOLING_REVIEW.md`

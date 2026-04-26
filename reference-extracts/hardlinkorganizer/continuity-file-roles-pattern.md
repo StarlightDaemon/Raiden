@@ -56,7 +56,7 @@ Do not promote directly:
 
 ## Provenance
 
-- Primary sources:
+- Primary sources from the retired `HardlinkOrganizer` snapshot:
   - `reference-repos/HardlinkOrganizer/agent-ledger/CURRENT_STATE.md`
   - `reference-repos/HardlinkOrganizer/agent-ledger/GOALS.md`
   - `reference-repos/HardlinkOrganizer/agent-ledger/OPEN_LOOPS.md`

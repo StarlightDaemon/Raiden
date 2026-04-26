@@ -63,7 +63,8 @@ reference-extracts/
 | `CTRL` | Pilot extraction created | first extracted-reference test case |
 | `HardlinkOrganizer` | Extract set created | embedded-instance structure, continuity roles, prompts, and startup extracts now preserved |
 | `BIND` | Extract set created | governance sidecar, maturity model, remote audit, prompt interface, and remediation extracts now preserved |
-| `Starlight Architect` | Pending | likely later source for original governance-architecture extracts |
+| `Stargate` | Extract set created | registry and stewardship patterns now preserved |
+| `Starlight Architect` | No extract needed | retired 2026-04-24; RAIDEN-relevant value already preserved in canon and review artifacts |
 
 ## Working Rule
 

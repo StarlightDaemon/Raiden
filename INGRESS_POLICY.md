@@ -35,6 +35,22 @@ Retire when safe.
 
 Extraction is conditional, not automatic.
 
+## 0. Pre-Intake Gate
+
+Before importing any external repo, answer these questions.
+If any question cannot be answered with a clear yes, do not import.
+
+| Gate Question | Required Answer |
+|---|---|
+| Is there a concrete design comparison or review reason for this import? | Yes |
+| Is the repo materially different from what is already in `reference-repos/`? | Yes |
+| Is the import bounded to a snapshot, not a live sync or ongoing pull? | Yes |
+| Will the import go under `reference-repos/` only, not into RAIDEN root or canon? | Yes |
+| Is there an intent to write a first-pass triage review after import? | Yes |
+
+If all answers are yes, proceed to §1.
+Record the reason for import in the triage review artifact.
+
 ## Ingress Flow
 
 ### 1. Snapshot Intake

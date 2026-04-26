@@ -40,7 +40,7 @@ Do not copy `CTRL`'s exact `reports/` sprawl as the default operating style.
 
 ## Provenance
 
-Primary source:
+Historical primary source at extraction time:
 
 - `reference-repos/CTRL/agent-ledger/2026-04-13__local_artifact_policy.md`
 

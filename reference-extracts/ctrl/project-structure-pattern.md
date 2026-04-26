@@ -39,7 +39,7 @@ Use the idea, but normalize it into RAIDEN's simpler canonical hierarchy.
 
 ## Provenance
 
-Primary sources:
+Historical primary sources at extraction time:
 
 - `reference-repos/CTRL/docs/PROJECT_SOP.md`
 - `reference-repos/CTRL/docs/reference/project_structure_guide.md`

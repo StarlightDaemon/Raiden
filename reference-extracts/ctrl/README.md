@@ -16,7 +16,7 @@ The goal is to preserve the parts of `CTRL` that matter to RAIDEN without keepin
 
 ## Source Provenance
 
-Primary source files:
+Historical source files at extraction time:
 
 - `reference-repos/CTRL/agent-ledger/2026-04-13__local_artifact_policy.md`
 - `reference-repos/CTRL/reports/2026-03-08__current_state_repo_agent_handoff.md`
@@ -32,7 +32,7 @@ Supporting interpretation:
 ## Current Retirement Status
 
 - extracted references exist
-- the full `CTRL` snapshot remains retained for now
-- `CTRL` is not yet retired from `reference-repos/`
+- the full `CTRL` snapshot has been retired from `reference-repos/`
+- the extracted references remain the preserved compact reread surface for RAIDEN
 
-This folder moves `CTRL` into the extracted-reference stage, but not yet full retirement.
+This folder now preserves `CTRL` after full raw-snapshot retirement.

@@ -56,7 +56,7 @@ Do not promote directly:
 
 ## Provenance
 
-- Primary sources:
+- Primary sources from the retired `HardlinkOrganizer` snapshot:
   - `reference-repos/HardlinkOrganizer/agent-prompts/README.md`
   - `reference-repos/HardlinkOrganizer/agent-prompts/micro-prompt-template.md`
   - `reference-repos/HardlinkOrganizer/AGENTS.md`

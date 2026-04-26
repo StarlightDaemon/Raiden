@@ -20,7 +20,8 @@ governance-sidecar, remote-audit, and maturity-model patterns.
 
 ## Source Provenance
 
-Primary source files:
+Primary source files came from these historical paths in the retired `BIND`
+snapshot:
 
 - `reference-repos/BIND/.governance/README.md`
 - `reference-repos/BIND/.governance/INTEGRATION_STRATEGY.md`
@@ -38,8 +39,8 @@ Supporting interpretation:
 ## Current Retirement Status
 
 - extracted references now exist
-- the full `BIND` snapshot remains retained for now
-- `BIND` is not yet retired from `reference-repos/`
+- the full `BIND` snapshot was retired from `reference-repos/` on 2026-04-23
+- the extracted references in this folder are now the preferred compact RAIDEN-owned reread surface for these patterns
 
-This folder moves `BIND` into the extracted-reference stage, but not yet full
+This folder now preserves the reusable `BIND` patterns after full snapshot
 retirement.

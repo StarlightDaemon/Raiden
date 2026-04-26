@@ -54,7 +54,7 @@ Do not promote directly:
 
 ## Provenance
 
-- Primary sources:
+- Primary sources from the retired `BIND` snapshot:
   - `reference-repos/BIND/.governance/HANDOFF_PROMPT.md`
   - `reference-repos/BIND/.governance/COMPLETION_REPORT_PROMPT.md`
   - `reference-repos/BIND/.governance/drift-report-template.md`

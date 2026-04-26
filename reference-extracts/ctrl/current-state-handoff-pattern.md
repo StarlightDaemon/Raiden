@@ -42,7 +42,7 @@ The preferred RAIDEN adaptation is:
 
 ## Provenance
 
-Primary sources:
+Historical primary sources at extraction time:
 
 - `reference-repos/CTRL/reports/2026-03-08__current_state_repo_agent_handoff.md`
 - `reference-repos/CTRL/reports/2026-04-10__next_main_rebuild_handoff.md`

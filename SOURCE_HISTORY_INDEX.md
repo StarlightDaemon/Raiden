@@ -36,15 +36,24 @@ They are preserved as evidence sources, not canon.
 
 | Repo | Current Review Status | Primary Relevance | Extract Status | Retirement Status |
 |---|---|---|---|---|
-| `HardlinkOrganizer` | Reviewed | embedded local control plane and prompt-library structure | extract set created | extracted reference retained; full snapshot still retained |
-| `Starlight Architect` | Reviewed | original governance architecture and formal boundary logic | not yet extracted | full snapshot retained |
-| `StarlightDaemonDev` | Reviewed | host/meta-workspace structure | not yet extracted | full snapshot retained |
-| `BIND` | Reviewed | governance sidecar, remote audit, prompt interfaces | extract set created | extracted reference retained; full snapshot still retained |
-| `CTRL` | Reviewed | artifact policy and handoff discipline | pilot extraction created | extracted reference retained; full snapshot still retained |
-| `ARC` | Reviewed | simple role-boundary pattern | not yet extracted | full snapshot retained |
-| `ARC-RC` | Reviewed | research-index and producer/consumer boundary pattern | not yet extracted | full snapshot retained |
+| `HardlinkOrganizer` | Reviewed | embedded local control plane and prompt-library structure | extract set created | full snapshot retired 2026-04-23; extracted references retained |
+| `Starlight Architect` | Reviewed | original governance architecture and formal boundary logic | not needed (value preserved in canon and review artifacts) | full snapshot retired 2026-04-24; no extract needed |
+| `StarlightDaemonDev` | Reviewed | host/meta-workspace structure | not needed (value preserved in canon and review artifacts) | full snapshot retired 2026-04-24; no extract needed |
+| `BIND` | Reviewed | governance sidecar, remote audit, prompt interfaces | extract set created | full snapshot retired 2026-04-23; extracted references retained |
+| `CTRL` | Reviewed | artifact policy and handoff discipline | pilot extraction created | full snapshot retired 2026-04-23; extracted references retained |
+| `ARC` | Reviewed | simple role-boundary pattern | not needed (narrow value in canon) | full snapshot retired 2026-04-23; no extract needed |
+| `ARC-RC` | Reviewed | research-index and producer/consumer boundary pattern | not needed (narrow value in canon) | full snapshot retired 2026-04-23; no extract needed |
+| `Stargate` | Scanned (broad reviews only) | project-registry and stewardship patterns | extract set created | full snapshot retired 2026-04-24; extracted references retained |
+| `StarlightDaemon` | Scanned (broad reviews only) | historical prompt/audit lineage | not needed (mostly provenance) | full snapshot retired 2026-04-24; no extract needed |
+| `Agent Ledger` | Scanned (broad reviews only) | none (empty import) | n/a | removed 2026-04-23 after empty import was confirmed |
+| `Afterglows` | Scanned (broad reviews only) | low evidence value | n/a | removed by operator direction 2026-04-23 |
+| `Nullsector` | Scanned (broad reviews only) | low evidence value | n/a | removed by operator direction 2026-04-23 |
+| `local-vpn-extract` | Scanned (broad reviews only) | very low evidence value | n/a | removed by operator direction 2026-04-23 |
 
-Lower-priority scanned sources remain outside the primary canon map unless reactivated by later review.
+Primary reviewed sources have per-repo `REPO_TOOLING_REVIEW.md` and `IMPORT_CANDIDATES.md`
+under `reference-reviews/`. Legacy holdings are tracked in
+`reference-reviews/LEGACY_HOLDINGS_TRIAGE.md`. The unified register is at
+`reference-reviews/REFERENCE_REPO_DISPOSITION_REGISTER.md`.
 
 ## 3. Extracted References
 
@@ -57,6 +66,7 @@ Current extracted-reference coverage:
 | `reference-extracts/ctrl/` | `CTRL` | pilot extraction for artifact policy, handoff, and structure guidance | Non-canonical |
 | `reference-extracts/hardlinkorganizer/` | `HardlinkOrganizer` | extracted references for embedded-instance structure, continuity roles, prompts, and startup guidance | Non-canonical |
 | `reference-extracts/bind/` | `BIND` | extracted references for governance sidecar, remote audit, maturity model, prompt interface, and remediation patterns | Non-canonical |
+| `reference-extracts/stargate/` | `Stargate` | extracted references for registry and stewardship pattern | Non-canonical |
 
 These extracts are a bridge layer:
 
