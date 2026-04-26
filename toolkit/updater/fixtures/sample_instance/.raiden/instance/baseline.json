@@ -1,0 +1,9 @@
+{
+  "installed_edict_version": "0.1.0",
+  "installed_at": "2026-04-20T00:00:00Z",
+  "managed_files": [
+    {"path": "README.md", "hash": "0e49d224090e42a41084650c077fd1c6949d60d85b70390224f7d7923d4428ba"},
+    {"path": "OPERATING_RULES.md", "hash": "9292e58afc11bdc40b0abd7974138401c7f1d566ca3ecc71af1490b6e88c2bc9"},
+    {"path": "OWNERSHIP_BOUNDARY.md", "hash": "e203b5afde0afdc22889803dce2f51c570d7bdb2089581c4d7f5e3fe85e06de0"}
+  ]
+}
