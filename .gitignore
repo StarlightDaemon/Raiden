@@ -1,2 +1,5 @@
 reference-repos/
 .codex.placeholder
+__pycache__/
+*.py[cod]
+.pytest_cache/
