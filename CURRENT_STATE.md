@@ -2,7 +2,7 @@
 
 ## Summary
 
-RAIDEN is now in the **canonicalization phase**.
+RAIDEN is now in the **canonicalization and release-preparation phase**.
 
 The repo has moved past initial intake and broad prototype comparison. Authority order is defined, reviewed prototype patterns are synthesized, and the first canonical root governance/navigation layer is in place.
 
@@ -45,7 +45,7 @@ RAIDEN is not yet a finished toolkit implementation. It is currently a structure
   - `AGENT_BOUNDARIES.md`
 - the canonical mission-and-operating-intent layer now exists in:
   - `OPERATING_INTENT.md`
-- external evidence intake is now governed by `INGRESS_POLICY.md`
+- external evidence intake is now governed by `INGRESS_POLICY.md`, including a pre-intake go/no-go gate (§0) that requires a bounded design reason before any import
 - the managed-vs-local update boundary is now defined in `MANAGED_VS_LOCAL.md`
 - support-layer canon now includes:
   - `ARTIFACT_AUDIENCE.md`
@@ -60,12 +60,23 @@ RAIDEN is not yet a finished toolkit implementation. It is currently a structure
 - prototype snapshot retirement is now governed by `SNAPSHOT_RETIREMENT_RULE.md`
 - `reference-extracts/` now exists as a compact non-canonical extracted-reference layer
 - `CTRL` has the first pilot extracted-reference set under `reference-extracts/ctrl/`
+- `CTRL` has now been fully retired from `reference-repos/` after extraction preserved its reusable RAIDEN value
 - `HardlinkOrganizer` now has extracted references under `reference-extracts/hardlinkorganizer/`
 - `BIND` now has extracted references under `reference-extracts/bind/`
+- `HardlinkOrganizer`, `BIND`, `ARC`, and `ARC-RC` have now been fully retired from `reference-repos/` after review/disposition closure and operator approval
+- empty `Agent Ledger` has now been removed from `reference-repos/` after verification confirmed it held no evidence value
 - downstream naming is now fixed:
   - `RAIDEN` = central governing agent
+  - `Edict` = central managed instruction/package surface
   - `RAIDEN Instance` = downstream deployed form
-  - `Edict` = managed core artifact
+  - `Writ` = installed managed core artifact
+- the initial toolkit/package surface has been deepened to reduce release ambiguity without overcommitting unresolved updater details
+- the minimum canonical installed `Writ` payload is explicitly defined, providing a stable managed-core target for later updater canon
+- the first updater MVP now exists under `toolkit/updater/` as a local CLI with `plan` and `apply` commands (D-0032)
+- the updater enforces the four-point managed-core update contract: update managed core, preserve overlay, preserve live state, stop on locally modified managed files
+- `.raiden/instance/metadata.json` and `.raiden/instance/baseline.json` are now the first named files inside the reserved instance support area
+- updater Tier 2 canon now promotes the package-manifest field set, core `MAJOR.MINOR.PATCH` version comparison semantics, the refined anomaly threshold rule, and a safe auto-removal path for baseline-tracked unchanged managed files (D-0033)
+- updater instance-side metadata and installed-baseline field contracts are now promoted for the current local CLI updater, including strict unknown-field rejection and an initial-install-only missing-baseline policy (D-0034)
 
 ## Current Canonical Source Map
 
@@ -80,21 +91,18 @@ The working concept ownership is now:
 
 ## In Progress
 
-- expanding the initial toolkit subtree around the adopted naming model without overcommitting unresolved updater details
-- narrowing future evidence intake so imports happen only when there is a real design or comparison reason
+- None active. The first updater MVP is complete and tested. Remaining updater canon work is now limited to broader metadata extensions and package/distribution questions beyond the promoted local CLI surface.
 
 ## Temporarily On Hold
 
-- updater work is intentionally paused after initial planning
-- the current updater planning bundle lives under `working/updater-system/`
-- the updater remains an open future work block, but it is not the active implementation focus right now
-- current operator direction is to defer updater-shape canon until RAIDEN is substantially closer to release-ready toolkit/package state
+- metadata extensions beyond the current local CLI contract, downgrade policy, and prerelease/build version metadata remain outside the current promoted updater surface
+- broader updater-shape canon beyond the current MVP scope is deferred until real downstream usage provides feedback
 
 ## Not Yet Done
 
-- no updater-shape canon or manifest-field canon exists yet
-- no imported prototype snapshot has been fully retired from `reference-repos/` yet
-- broader extracted-reference coverage remains optional for later repos such as `Starlight Architect`, but the default next high-value targets (`HardlinkOrganizer` and `BIND`) are now preserved
+- broader updater metadata extensions beyond the promoted local CLI contract are not yet settled
+- broader extracted-reference coverage is not needed for the retired primary reviewed repos whose RAIDEN-relevant value is already preserved in canon and review artifacts
+- no legacy holds remain under `reference-repos/`; all legacy snapshots have been retired or removed
 
 ## Known Constraints
 
@@ -130,5 +138,5 @@ The working concept ownership is now:
 
 ## Last Updated
 
-- Date: 2026-04-20
+- Date: 2026-04-25
 - Confidence: High

@@ -13,8 +13,12 @@ It exists to ensure that future RAIDEN update mechanisms can refresh the right f
 Current naming:
 
 - `RAIDEN` = central governing agent/framework authority
+- `Edict` = central RAIDEN-authored managed instruction/package surface
 - `RAIDEN Instance` = downstream deployed repo-local form
-- `Edict` = managed core artifact within a `RAIDEN Instance`
+- `Writ` = installed managed core artifact within a `RAIDEN Instance`
+
+`RAIDEN` authors and maintains an `Edict`; a downstream `RAIDEN Instance`
+receives and carries the issued `Writ`.
 
 ## Core Rule
 
@@ -43,7 +47,7 @@ Examples:
 - shared prompt rules and shared prompt assets
 - updater metadata
 - version manifests
-- the `Edict` artifact set
+- the issued `Writ` artifact set
 
 Characteristics:
 
@@ -105,6 +109,15 @@ If a managed file has local edits, the updater should:
 - require explicit resolution
 
 It should not silently replace a locally edited law file.
+
+For the current local CLI updater, an installed baseline is required before
+updating a non-empty managed root. A missing baseline is allowed only for an
+initial install into a fresh managed root with no existing files.
+
+If a newer package omits a previously managed file, the updater may remove that
+file only when the installed baseline recorded it and the current instance copy
+still matches that recorded baseline. If the removal candidate was locally
+modified, the updater must stop and report a conflict.
 
 ## Downstream Agent Rule
 
@@ -175,8 +188,8 @@ The default physical root of a downstream `RAIDEN Instance` is:
 
 Within `.raiden/`, the first-pass canonical structure is:
 
-- `edict/`
-  - managed core owned by RAIDEN
+- `writ/`
+  - installed managed core owned by RAIDEN
 - `local/`
   - repo-local overlay materials
 - `state/`

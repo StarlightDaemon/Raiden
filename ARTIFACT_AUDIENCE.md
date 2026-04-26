@@ -97,7 +97,7 @@ Material intended for a deployed repo-local RAIDEN form rather than central RAID
 Examples:
 
 - `toolkit/instance/`
-- downstream `Edict` package surfaces
+- downstream `Writ` surfaces
 - local startup/read-order artifacts once emitted into a target repo
 
 ### 7. Implementation Agent

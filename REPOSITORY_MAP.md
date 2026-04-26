@@ -46,7 +46,7 @@ Canonical toolkit subtree:
 
 | Path | Role |
 |---|---|
-| `toolkit/` | canonical central toolkit subtree for shared prompt assets and the first managed `Edict` package surface |
+| `toolkit/` | canonical central toolkit subtree for shared prompt assets and the first central `Edict` package surface |
 
 ### 2. Preserved Source Layer
 

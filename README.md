@@ -15,8 +15,12 @@ It exists to hold:
 RAIDEN uses this naming stack:
 
 - `RAIDEN` = central governing agent/framework authority
+- `Edict` = central RAIDEN-authored managed instruction/package surface
 - `RAIDEN Instance` = downstream deployed repo-local form
-- `Edict` = managed core artifact within a `RAIDEN Instance`
+- `Writ` = installed managed core artifact within a `RAIDEN Instance`
+
+`payload` is a technical package-side term for the installable subset of an
+`Edict`; after installation, that payload becomes the downstream `Writ`.
 
 ## Current State
 
@@ -32,9 +36,9 @@ Current published state includes:
 
 Not yet done:
 
-- final updater-shape canon
-- final manifest-field canon
-- broader package/release mechanics beyond the current first-pass toolkit surface
+- broader updater metadata extensions beyond the current local CLI contract
+- downgrade, prerelease/build, and package distribution policy
+- broader package/release mechanics beyond the current toolkit/updater surface
 
 ## Published Layout
 

@@ -69,7 +69,7 @@ These earlier conditions should no longer be assumed:
 
 ### Current Phase
 
-RAIDEN is in the **canonicalization phase**.
+RAIDEN is in the **canonicalization and release-preparation phase**.
 
 It is now a structured central toolkit/framework repo, but not yet a fully materialized toolkit implementation.
 
@@ -82,11 +82,15 @@ It is now a structured central toolkit/framework repo, but not yet a fully mater
 - a central-versus-downstream model is established
 - the naming stack is fixed:
   - `RAIDEN`
-  - `RAIDEN Instance`
   - `Edict`
+  - `RAIDEN Instance`
+  - `Writ`
 - managed core versus local overlay versus live state boundaries are defined
 - ingress, extraction, and snapshot-retirement rules exist
-- `reference-extracts/ctrl/` is the first pilot extracted-reference set
+- extracted-reference coverage now exists for `CTRL`, `HardlinkOrganizer`, and `BIND`
+- the first local CLI updater exists under `toolkit/updater/`
+- current updater package-manifest, version-comparison, baseline, and
+  instance-metadata contracts are promoted for the local CLI surface
 
 ### Current Strongest Source Assignments
 
@@ -99,11 +103,13 @@ It is now a structured central toolkit/framework repo, but not yet a fully mater
 
 ### Current Open Work
 
-The main remaining work is narrower and more concrete than before:
+The main remaining work is now bounded follow-through rather than broad
+architecture discovery:
 
-- decide which reviewed snapshots are candidates for retirement after extraction
-- expand the initial toolkit subtree around shared prompts and the managed `Edict` package surface
-- continue release-readiness preparation for toolkit/package material before updater canon resumes, using `RELEASE_READY_CHECKLIST.md` as the gate
+- keep broader updater metadata extensions, downgrade policy,
+  prerelease/build metadata, and package distribution mechanics deferred until
+  real downstream usage provides evidence
+- keep future evidence intake narrow and policy-driven
 
 ### Current Constraint
 
@@ -118,30 +124,32 @@ RAIDEN must continue to treat:
 
 ### Near-Term Future
 
-The next work block should focus on turning the current conceptual model into the first practical implementation-facing layer.
+The preliminary release-readiness preparation is complete, and the first local
+CLI updater surface now exists. Near-term work should stay narrow.
 
 Recommended order:
 
-1. deepen the initial toolkit subtree/package surface
-2. assess whether extracted repos can move toward retirement readiness
-3. continue release-readiness preparation for toolkit/package material
-4. return to updater-shape canon only after that preparation is substantially complete
+1. validate the current local CLI updater against real downstream trial usage
+2. keep broader metadata and distribution questions deferred until trial usage
+   exposes a concrete need
+3. update continuity docs when actual usage changes release readiness or
+   updater scope
 
 ### Medium-Term Future
 
-After release-readiness preparation and extract/retirement work are clearer, RAIDEN should:
+After the local CLI updater has downstream evidence, RAIDEN should:
 
-- define version/manifests for managed core updates
-- define concrete downstream instance folder structure
-- define how central prompt assets map into deployed repo-local operational prompts
-- define how an updater enforces managed-versus-local boundaries
+- decide whether broader metadata extensions are needed
+- decide downgrade and prerelease/build version policy
+- decide package archive, publishing, and remote distribution mechanics
+- refine downstream instance docs only where usage shows ambiguity
 
 ### Long-Term Future
 
 RAIDEN should eventually support two stable forms:
 
 - a central toolkit/package/sidecar-capable form
-- a downstream `RAIDEN Instance` form with an `Edict` managed core
+- a downstream `RAIDEN Instance` form with a `Writ` managed core sourced from an `Edict`
 
 At that point, large raw prototype snapshots should no longer be the main reference surface for ongoing work.
 
@@ -151,28 +159,21 @@ If a new agent is starting from the current repo state, the best next focus is:
 
 ### Primary next task
 
-Deepen the initial toolkit/package surface until RAIDEN is substantially closer
-to release-ready state.
+Organize the current release-candidate worktree into reviewed staging groups.
 
 ### Why this is next
 
-Current operator direction is to keep updater work deferred while RAIDEN still
-has material toolkit/package preparation work left.
-
-That means the highest-value active work is:
-
-- deeper toolkit/package documentation
-- clearer managed-core boundary and lifecycle material
-- retirement-readiness assessment
-- other release-preparation work tracked in `RELEASE_READY_CHECKLIST.md` that reduces ambiguity before updater canon
-
-The updater question remains open, but it should resume after RAIDEN is closer
-to release-ready package state.
+All currently identified release-preparation tasks, including toolkit/package
+boundary definition, `Writ` payload mapping, updater MVP implementation, and
+legacy snapshot disposition, are now represented in the worktree. The immediate
+risk is mixing canon, updater implementation, reference disposition, and
+working-only artifacts without an explicit staging plan.
 
 ### Secondary next task
 
-Assess whether reviewed snapshots can move toward retirement readiness without
-losing reread value still needed for toolkit/package preparation.
+Run updater validation and keep any working-only prompts or evaluation fixtures
+out of the release commit set unless the operator explicitly chooses to retain
+them.
 
 ## 5. Reading Order For A New Agent
 
@@ -193,5 +194,6 @@ If an agent needs to start work from this file, read next in this order:
 - Observed evidence: high
 - Structural direction: high
 - Toolkit implementation completeness: low
-- Updater design completeness: low
-- Snapshot-retirement readiness across all repos: low-to-medium
+- Updater design completeness: medium for the current local CLI surface; low
+  for broader distribution/update shapes
+- Snapshot-retirement readiness across all repos: closed/complete

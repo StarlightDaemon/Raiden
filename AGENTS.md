@@ -29,7 +29,8 @@ Root-level canonical Markdown files define authority. `toolkit/` is the only exp
 ## Conventions
 
 - Prefer concise ASCII Markdown.
-- Preserve canonical naming exactly: `RAIDEN`, `RAIDEN Instance`, `Edict`.
+- Preserve canonical naming exactly: `RAIDEN`, `Edict`, `RAIDEN Instance`,
+  `Writ`.
 - Treat root canonical docs as the source of truth unless they explicitly delegate to `toolkit/`.
 - Normalize prototype wording before adoption; do not promote imported phrasing by proximity.
 - Keep provenance clear when canon is informed by `reference-reviews/` or `reference-extracts/`.
@@ -47,7 +48,7 @@ Root-level canonical Markdown files define authority. `toolkit/` is the only exp
 - Do not edit `reference-repos/` snapshots unless the operator explicitly asks.
 - Do not treat `reference-reviews/`, `reference-extracts/`, or `Source_info/` as canon without explicit adoption.
 - Do not rename core canonical terms or change authority order without explicit approval.
-- Do not resume or broaden updater-shape canon without operator direction.
+- Do not broaden updater-shape canon beyond the current local CLI surface without explicit operator direction and observed need.
 - Do not make broad repo-wide rewrites when a bounded doc update is sufficient.
 
 ## Workflow

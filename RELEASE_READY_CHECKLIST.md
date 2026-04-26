@@ -5,21 +5,22 @@
 This document turns "release-ready preparation" into a concrete canonical
 checklist for RAIDEN.
 
-Use it to judge whether RAIDEN is sufficiently prepared at the
-toolkit/package/downstream-structure level before updater-shape canon resumes.
+Use it to record the release-preparation threshold that allowed the current
+local CLI updater work to proceed, and to judge future updater broadening.
 
 This file does not define updater behavior.
-It defines the preparation threshold that should be reached first.
+It defines the preparation threshold that should be reached before updater
+scope expands.
 
 ## Core Rule
 
-Updater-shape canon should remain deferred until RAIDEN is substantially closer
-to release-ready toolkit/package state.
+Updater-shape canon should remain narrow until RAIDEN is materially closer to a
+v1 release state and observed usage justifies broadening.
 
-For current canon, "substantially closer to release-ready" means:
+For current canon, "materially closer to a v1 release state" means:
 
 - the checklist's required items are complete or explicitly waived by operator
-- only updater-specific delivery and manifest questions remain as the main
+- only updater-specific delivery, metadata, or distribution questions remain as the main
   unresolved work
 
 ## Status Meanings
@@ -27,7 +28,8 @@ For current canon, "substantially closer to release-ready" means:
 - `Done` = materially complete in current canon
 - `Partial` = started, but still missing important release-prep clarity
 - `Open` = not yet sufficiently defined for release-readiness
-- `Deferred` = intentionally postponed and not required before updater canon
+- `Deferred` = intentionally postponed and not required before updater scope
+  broadens
 
 ## Required Checklist
 
@@ -36,8 +38,8 @@ For current canon, "substantially closer to release-ready" means:
 | Item | Status | Notes |
 |---|---|---|
 | Authority order and promotion rules are stable | `Done` | `SOURCE_OF_TRUTH.md` exists and the toolkit subtree is explicitly designated |
-| Root continuity files agree on current priorities | `Partial` | continuity is mostly aligned, but must keep tracking checklist progress as work continues |
-| Naming stack is fixed and consistently used | `Done` | `RAIDEN`, `RAIDEN Instance`, and `Edict` are settled |
+| Root continuity files agree on current priorities | `Done` | current continuity docs agree on phase, release-prep focus, and current updater scope |
+| Naming stack is fixed and consistently used | `Done` | `RAIDEN`, `Edict`, `RAIDEN Instance`, and `Writ` are settled |
 | Managed-vs-local boundary remains explicit | `Done` | boundary and update contract are defined in canon |
 
 ### 2. Central Toolkit Surface
@@ -47,9 +49,9 @@ For current canon, "substantially closer to release-ready" means:
 | Canonical `toolkit/` subtree exists | `Done` | first explicit subtree now exists |
 | Shared prompt assets have a real central home | `Done` | `toolkit/prompts/` exists |
 | Shared prompt governance and catalog exist | `Done` | prompt governance and catalog docs now exist |
-| Managed `Edict` package boundary is documented | `Done` | boundary and lifecycle docs now exist |
+| Central `Edict` package boundary is documented | `Done` | boundary and lifecycle docs now exist |
 | Package-side release vocabulary exists | `Done` | lifecycle language is defined without updater specifics |
-| Further central package docs are added only where they reduce ambiguity | `Partial` | subtree is real, but still intentionally thin |
+| Further central package docs are added only where they reduce ambiguity | `Done` | current canon keeps the central `Edict`, installable `payload`, and downstream `Writ` mapping explicit; add further package docs only if a new release-prep ambiguity appears |
 
 ### 3. Downstream Instance Preparation
 
@@ -65,11 +67,11 @@ For current canon, "substantially closer to release-ready" means:
 
 | Item | Status | Notes |
 |---|---|---|
-| Managed-core ownership test is documented | `Done` | `Edict` boundary doc defines what belongs in managed core |
+| Managed-core ownership test is documented | `Done` | the `Edict` boundary doc defines what belongs in the downstream `Writ` |
 | Release-prep work no longer depends on raw naming ambiguity | `Done` | naming stack is fixed |
 | Release-prep work no longer depends on prompt-home ambiguity | `Done` | shared prompts now live under `toolkit/prompts/` |
-| Package examples or package-ready skeleton materials exist | `Done` | `toolkit/edict/example-package/` now provides a minimal real managed-core package skeleton with a deployable `payload/` mapping to `.raiden/edict/` |
-| Compatibility/release documentation is far enough along to support updater design later | `Partial` | lifecycle, mapping, compatibility, release-support positioning, and compact review-checklist docs now exist, but exact release/compatibility mechanics remain intentionally deferred |
+| Package examples or package-ready skeleton materials exist | `Done` | `toolkit/edict/example-package/` now provides a minimal real managed-core package skeleton with a deployable `payload/` mapping to `.raiden/writ/` |
+| Compatibility/release documentation is far enough along to support updater design later | `Done` | lifecycle, mapping, compatibility, release-support positioning, compact review-checklist guidance, and the minimum installed `Writ` payload are explicit enough that later updater work has a stable current package target |
 
 ### 5. Evidence And Retirement Readiness
 
@@ -79,45 +81,44 @@ For current canon, "substantially closer to release-ready" means:
 | High-value extracted references exist where needed | `Done` | `CTRL`, `HardlinkOrganizer`, and `BIND` now have extracts |
 | Source-history index matches actual extract state | `Done` | updated to reflect current extract coverage |
 | Retirement readiness has been explicitly assessed for current candidate repos | `Done` | assessment exists for `CTRL`, `HardlinkOrganizer`, and `BIND` |
-| At least one raw snapshot is clearly safe to retire | `Open` | current assessment says none should be retired yet |
-| Future evidence intake is staying narrow and policy-driven | `Partial` | policy exists, but this remains a live discipline task |
+| At least one raw snapshot is clearly safe to retire | `Done` | `CTRL` was retired from `reference-repos/` on 2026-04-23 after review, synthesis, extraction, and operator approval satisfied the retirement rule |
+| Future evidence intake is staying narrow and policy-driven | `Done` | pre-intake gate (§0 of `INGRESS_POLICY.md`) requires a bounded design reason and five yes/no checks before any import; intake is now auditable by process, not only by policy wording |
 
 ### 6. Resume Gate For Updater Canon
 
 | Item | Status | Notes |
 |---|---|---|
 | Remaining active work is mostly release-prep rather than broad architecture discovery | `Done` | current work is narrower than earlier synthesis phases |
-| Remaining ambiguity is concentrated enough that updater design would not freeze weak assumptions | `Partial` | still blocked by downstream/package readiness gaps |
-| Operator agrees RAIDEN is close enough to release-ready state to resume updater canon | `Open` | current operator direction is to continue release-prep first |
+| Remaining ambiguity is concentrated enough that updater design would not freeze weak assumptions | `Done` | the `Edict`-to-`Writ` package-side distinction is explicit, and the toolkit surface is now sufficiently prepared; updater design would no longer freeze weak assumptions |
+| Operator agrees RAIDEN is close enough to a v1 release state to resume updater canon | `Done` | operator approved updater MVP build on 2026-04-24; first updater implemented and tested under `toolkit/updater/` (D-0032) |
 
 ## Current Priority Gaps
 
-The highest-value incomplete checklist items are:
+The highest-value incomplete work is now:
 
-1. continue narrow release-prep work until updater-specific questions are the
-   main unresolved surface
-2. improve package/release documentation where it reduces ambiguity
-3. keep future evidence intake narrow and policy-driven while the release-prep
-   pass continues
+1. keep broader updater metadata extensions, downgrade policy, and
+   package/distribution design deferred unless real downstream usage shows a
+   concrete need to promote them
+2. keep future evidence intake narrow and policy-driven unless a new bounded
+   design reason appears
 
 ## What This Checklist Does Not Require Yet
 
-The following are not required before updater canon resumes:
+The following are not required before broader updater canon resumes:
 
 - final updater command surface
-- exact manifest field names
 - exact package archive format
 - remote distribution mechanics
 - GUI or drag-and-drop update flow
 
-Those belong to updater-shape canon later.
+Those belong to later updater-shape or package/distribution canon.
 
 ## Use Rule
 
-When a future agent asks whether updater work should resume:
+When a future agent asks whether updater work should broaden:
 
 1. review this checklist
 2. identify which required items remain `Open` or materially `Partial`
 3. finish or explicitly waive those items first
-4. resume updater-shape canon only when the remaining unresolved work is mostly
-   updater-specific
+4. broaden updater-shape canon only when the remaining unresolved work is mostly
+   updater-specific and backed by observed need

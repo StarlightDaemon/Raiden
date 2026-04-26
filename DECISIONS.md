@@ -152,14 +152,14 @@
 ## D-0019
 
 - Date: 2026-04-18
-- Status: Active
+- Status: Superseded by D-0031
 - Decision: the managed core artifact inside a `RAIDEN Instance` is named `Edict`.
 - Rationale: `Edict` is concise, authoritative, subordinate to RAIDEN itself, and fits the managed-law/control-package role better than documentation-heavy alternatives.
 
 ## D-0020
 
 - Date: 2026-04-18
-- Status: Active
+- Status: Superseded by D-0031
 - Decision: the naming stack for current canon is:
   - `RAIDEN` = central governing agent/framework authority
   - `RAIDEN Instance` = downstream deployed repo-local form
@@ -195,16 +195,16 @@
 - Date: 2026-04-18
 - Status: Active
 - Decision: `toolkit/` is the first explicitly designated canonical RAIDEN toolkit subtree.
-- Rationale: RAIDEN now needs a real non-root home for shared prompt assets and the first managed `Edict` package surface without waiting for the full updater/package stack to be finished.
+- Rationale: RAIDEN now needs a real non-root home for shared prompt assets and the first central `Edict` package surface without waiting for the full updater/package stack to be finished.
 - Implementation note: root canonical docs remain the higher-order authority, and unresolved updater metadata or downstream folder details should not be treated as settled only because the subtree now exists.
 
 ## D-0025
 
 - Date: 2026-04-18
-- Status: Active
-- Decision: updater-shape canon remains intentionally deferred until RAIDEN is substantially closer to release-ready package and toolkit state.
-- Rationale: RAIDEN still needs more toolkit/package and release-preparation busy work completed before an updater design would be stable enough to justify canonizing delivery and manifest behavior.
-- Implementation note: updater work remains open, but it should not be treated as the primary active task while release-readiness preparation is still incomplete.
+- Status: Superseded by D-0032
+- Decision: updater-shape canon remains intentionally deferred until RAIDEN is materially closer to a v1 release state.
+- Rationale: RAIDEN still needs more toolkit/package and release-preparation work completed before an updater design would be stable enough to justify canonizing delivery and manifest behavior.
+- Implementation note: updater work remains open, but it should not be treated as an active planning or build task while release-readiness preparation is still incomplete.
 
 ## D-0026
 
@@ -212,7 +212,7 @@
 - Status: Active
 - Decision: the default physical root of a downstream `RAIDEN Instance` is a compact `.raiden/` subtree, with a repo-root `AGENTS.md` acting as the startup bridge into that instance.
 - Rationale: this keeps the repo-local control plane explicit without overtaking the whole target repository, preserves a clear agent entrypoint at the repo root, and fits the strongest embedded-instance evidence from `HardlinkOrganizer`.
-- Implementation note: within `.raiden/`, the first-pass canonical structure distinguishes `edict/`, `local/`, `state/`, and `instance/`; exact updater metadata filenames remain deferred.
+- Implementation note: within `.raiden/`, the first-pass canonical structure distinguishes `writ/`, `local/`, `state/`, and `instance/`; the first updater later named `.raiden/instance/metadata.json` and `.raiden/instance/baseline.json`, and D-0034 promoted their current local CLI field contracts.
 
 ## D-0027
 
@@ -237,3 +237,58 @@
 - Decision: RAIDEN artifacts will be classified by canonicality, primary audience, intended role, and non-use boundary when confusion risk is material.
 - Rationale: authority order alone does not prevent audience bleed. RAIDEN needs an explicit distinction between files meant to define RAIDEN itself, files meant for review/synthesis, and files meant for downstream execution or deployment.
 - Implementation note: layer defaults are defined in `ARTIFACT_AUDIENCE.md`; files outside root canon, especially under `Source_info/`, should add local status blocks when they contain prescriptive language or could be mistaken for downstream instruction.
+
+## D-0030
+
+- Date: 2026-04-20
+- Status: Active
+- Decision: when an execution environment exposes explicit model and reasoning controls, RAIDEN should default to one bounded moderate-reasoning pass first and escalate reasoning only after observed failure or repeated rerun pressure.
+- Rationale: repeated low-signal retries can burn more tokens than one stronger follow-up pass, but always starting at the highest reasoning level is also wasteful. RAIDEN should therefore prefer a stable moderate baseline, then escalate only when the first pass shows incompleteness, contradiction, premature stopping, or repeated steering needs.
+- Implementation note: keep the durable rule vendor-neutral in root canon. Prompt-layer guidance may define host-specific baseline profiles and escalation paths, but RAIDEN should not hard-code one provider's model family as a global default in root law.
+
+## D-0031
+
+- Date: 2026-04-23
+- Status: Active
+- Decision: current canon distinguishes the central `Edict` from the downstream `Writ`:
+  - `RAIDEN` = central governing agent/framework authority
+  - `Edict` = central RAIDEN-authored managed instruction/package surface
+  - `RAIDEN Instance` = downstream deployed repo-local form
+  - `Writ` = installed managed core artifact within a `RAIDEN Instance`
+- Rationale: this separates central authored authority from the downstream issued managed form while preserving the intended medieval/legal naming model.
+- Implementation note: `payload` remains a technical package-side term for the installable subset of an `Edict`; by default that payload installs into `.raiden/writ/`.
+
+## D-0032
+
+- Date: 2026-04-24
+- Status: Active
+- Decision: the first concrete RAIDEN updater is a local CLI with `plan` and `apply` commands, implemented under `toolkit/updater/`.
+- Rationale: a local CLI is the narrowest updater form that satisfies the four-point managed-core update contract (D-0016) with tested evidence. The MVP proves update safety, conflict detection, delta-only behavior, and anomaly classification without requiring remote distribution, packaging polish, or GUI flows.
+- Implementation note: the updater uses `.raiden/instance/metadata.json` and `.raiden/instance/baseline.json` within the reserved instance support area (D-0026). Package-manifest fields, core version comparison semantics, anomaly thresholds, and managed-file removal behavior were later refined and promoted in D-0033; instance-side metadata and installed-baseline fields were later refined and promoted for the current local CLI updater in D-0034.
+
+## D-0033
+
+- Date: 2026-04-24
+- Status: Active
+- Decision: updater Tier 2 canon now promotes the current package-manifest surface, core version comparison semantics, anomaly threshold refinement, and safe managed-file auto-removal rules for the local CLI updater.
+- Rationale: the current updater implementation and test suite now provide enough evidence to stabilize the package-side contract without broadening into a full package ecosystem design. This closes the remaining Tier 2 gaps while keeping broader updater metadata extensions and distribution questions provisional.
+- Implementation note:
+  - package manifests live at `manifest.json` beside `payload/` and require `package_type`, `edict_version`, `compatible_instance_schemas`, `managed_files`, and `created_at`; each `managed_files` entry contains `path` and SHA-256 `hash`
+  - version comparison uses strict core `MAJOR.MINOR.PATCH` numeric comparison; prerelease/build metadata and downgrade policy remain outside the current canon surface
+  - `high_change_ratio` warns only when more than 50 percent of the managed set changes and the managed set contains at least 8 files; `high_change_count` warns when more than 10 managed files change
+  - managed-file removals may auto-apply only when the file is recorded in the installed baseline and has not been locally modified since install; removals remain operator-visible in plan output and anomaly reporting
+  - instance-side metadata and installed-baseline field names were intentionally left provisional by this decision and later addressed in D-0034
+
+## D-0034
+
+- Date: 2026-04-25
+- Status: Active
+- Decision: the current local CLI updater canon now promotes the instance-side metadata and installed-baseline field contracts for `.raiden/instance/metadata.json` and `.raiden/instance/baseline.json`.
+- Rationale: the updater implementation now validates the field sets strictly enough to support canon promotion without weakening the managed/local safety rule. Missing installed baselines are no longer broadly allowed; they are allowed only for initial install into a fresh managed root with no existing files.
+- Implementation note:
+  - `metadata.json` requires exactly `instance_schema_version`, `instance_form_type`, `installed_edict_version`, `managed_roots`, `overlay_roots`, and `live_state_roots`
+  - `instance_form_type` is fixed to `raiden-instance`; the current local CLI supports `managed_roots` of `[".raiden/writ"]`, `overlay_roots` of `[".raiden/local"]`, and `live_state_roots` of `[".raiden/state"]`
+  - `baseline.json` requires exactly `installed_edict_version`, `installed_at`, and `managed_files`; each `managed_files` entry contains exactly `path` and SHA-256 `hash`, and managed-file paths must be unique
+  - unknown extra fields in these current local CLI metadata files are rejected rather than ignored
+  - if `baseline.json` is missing while `.raiden/writ/` already contains files, planning blocks with `missing_baseline`; a missing baseline is accepted only when the managed root is empty or absent
+  - broader metadata extensions, multiple managed roots, downgrade policy, prerelease/build metadata, and package/distribution mechanics remain outside this promoted surface

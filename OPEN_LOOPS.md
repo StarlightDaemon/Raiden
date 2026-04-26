@@ -73,14 +73,14 @@
 ## LOOP-0011
 
 - Title: Define the first concrete RAIDEN updater shape
-- Status: Open
+- Status: Closed
 - Why it matters: the managed-vs-local update contract is now defined, but RAIDEN still needs a practical delivery/update mechanism such as CLI, bundle import, or drag-and-drop update flow.
 - Success condition: RAIDEN canon identifies the first supported updater form and the metadata or manifest expectations that go with it.
-- Current handling: intentionally deferred until RAIDEN is substantially closer to release-ready toolkit/package state; see `working/updater-system/` for the non-canonical build plan and agent prompt prepared for later resume.
+- Closed by: first updater MVP implemented and tested under `toolkit/updater/` as a local CLI with `plan` and `apply` commands; recorded as D-0032.
 
 ## LOOP-0012
 
-- Title: Materialize the first toolkit structure around the adopted RAIDEN / RAIDEN Instance / Edict naming stack
+- Title: Materialize the first toolkit structure around the adopted RAIDEN / Edict / RAIDEN Instance / Writ naming stack
 - Status: Closed
 - Why it matters: naming is now fixed, but the toolkit/component map and future subtree still need to translate that naming into concrete structure and responsibilities.
 - Success condition: `TOOLKIT_INDEX.md` defines the first canonical toolkit/component structure using the adopted naming model.
@@ -95,6 +95,7 @@
 ## LOOP-0014
 
 - Title: Apply the ingress policy to future external repo intake
-- Status: Open
+- Status: Closed
 - Why it matters: the early heavy prototype-import phase should not become the default long-term behavior for RAIDEN.
 - Success condition: future repo intake follows `INGRESS_POLICY.md`, with import, review, optional extraction, and retirement handled intentionally rather than ad hoc.
+- Closed by: a pre-intake go/no-go gate (§0) added to `INGRESS_POLICY.md` on 2026-04-23; any future import must pass five bounded questions before proceeding, making intake auditable by process rather than only by policy wording.

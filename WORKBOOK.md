@@ -5,13 +5,15 @@ This file is the active synthesis workspace for turning preserved source history
 ## Current Focus
 
 - keep the root continuity layer aligned with actual progress
-- turn the conceptual toolkit model into a concrete subtree or package surface when ready
-- continue release-readiness preparation work before updater canon resumes
-- use `RELEASE_READY_CHECKLIST.md` to track what still blocks updater canon
+- keep the concrete toolkit, instance, and updater surfaces aligned with canon
+- keep broader updater metadata, downgrade, prerelease/build, and distribution
+  questions deferred until real downstream usage provides evidence
+- use `RELEASE_READY_CHECKLIST.md` to preserve the release-prep threshold that
+  allowed the current local CLI updater work to proceed
 
 ## Current Phase
 
-RAIDEN is in the **canonicalization phase**.
+RAIDEN is in the **canonicalization and release-preparation phase**.
 
 Completed phase work:
 
@@ -24,18 +26,20 @@ Completed phase work:
 - first support-layer canon
 - prototype snapshot retirement rule
 - first extracted-reference pilot
+- pre-intake gate added to `INGRESS_POLICY.md` so future external repo intake
+  stays bounded by a concrete go/no-go check rather than ad hoc import habit
 
 Current phase work:
 
-- expand the initial `toolkit/` subtree without freezing unresolved updater metadata too early
-- materialize toolkit/component structure using the adopted `RAIDEN` / `RAIDEN Instance` / `Edict` naming model
-- keep future external repo intake narrow and policy-driven rather than repeating broad early snapshot imports
+- maintain the promoted `RAIDEN` / `Edict` / `RAIDEN Instance` / `Writ`
+  surface without broadening package or distribution canon prematurely
+- keep future evidence intake narrow and policy-driven
 
 Temporarily on hold:
 
-- the first practical updater approach remains an open work block, but active updater implementation planning is paused for now
-- prepared non-canonical working artifacts live under `working/updater-system/`
-- current operator direction is to keep updater-shape work deferred until RAIDEN is substantially closer to release-ready toolkit/package state
+- broader updater metadata extensions
+- downgrade policy and prerelease/build version metadata
+- package archive, publishing, and remote distribution mechanics
 
 ## Reviewed Prototype Coverage
 
@@ -64,10 +68,13 @@ Strongest current source assignments are recorded in:
 - `ARC` and `ARC-RC` are supporting role-boundary and research-index references.
 - current naming stack is:
   - `RAIDEN` = central governing agent
+  - `Edict` = central managed instruction/package surface
   - `RAIDEN Instance` = downstream deployed form
-  - `Edict` = managed core artifact
+  - `Writ` = installed managed core artifact
 
 ## Active Unresolved Questions
 
-- Which reviewed repos are now good candidates for retirement readiness assessment?
-- Which release-readiness preparation tasks still need completion before updater canon should resume?
+- Which broader updater metadata extensions are justified by real downstream
+  usage?
+- Which package/distribution mechanics should remain deferred until there is a
+  concrete release need?

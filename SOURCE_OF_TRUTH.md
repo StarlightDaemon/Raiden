@@ -73,5 +73,10 @@ Prototype wording, names, and assumptions do not become authoritative by proximi
 ## Current Naming Rule
 
 - `RAIDEN` is the canonical central governing agent/framework name.
+- `Edict` is the canonical central RAIDEN-authored managed
+  instruction/package surface.
 - `RAIDEN Instance` is the canonical downstream repo-local deployed form.
-- `Edict` is the canonical managed core artifact within a `RAIDEN Instance`.
+- `Writ` is the canonical installed managed core artifact within a
+  `RAIDEN Instance`.
+- `payload` is a technical package-side install term, not a peer identity in
+  the canonical naming stack.
