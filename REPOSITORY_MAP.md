@@ -81,6 +81,16 @@ This layer is where source evidence is assessed before promotion into canon.
 
 This layer preserves reusable patterns after review without keeping every full prototype repo as the preferred reread surface forever.
 
+### 6. Non-Canonical Root Artifacts
+
+| Path | Role |
+|---|---|
+| `RAIDEN_NEXT_STEP_WORKING_PLAN.md` | historical working draft; not current guidance; non-canonical |
+| `.codex/` | host-specific legacy operator config; non-canonical; Codex/GPT environment; not active |
+| `.codex.placeholder` | zero-byte placeholder; origin and purpose undocumented; non-canonical |
+
+These files are retained at the root for historical or host-environment reasons. Nothing here is RAIDEN canon.
+
 ## Current Operating Flow
 
 1. External repo evidence enters through `reference-repos/` under `INGRESS_POLICY.md`
