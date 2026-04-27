@@ -1,8 +1,12 @@
 """Compatibility wrappers for legacy-artifact inspection.
 
-Legacy detection now lives in ``raiden_updater.installer`` so CLI and web
-surfaces share one canonical behavior. This module preserves a small
-compatibility surface for older imports.
+This shim wraps ``raiden_updater.installer.scan_legacy_artifacts`` and
+``init_instance()`` behind a stable interface so that callers using the old
+``raiden_updater.legacy`` import path continue to work after legacy detection
+was consolidated into ``installer``. The original external consumer is unknown;
+the shim was created defensively during that consolidation. It can be dropped
+once no code outside this package imports ``raiden_updater.legacy`` directly
+(verify with a repo-wide grep before removal).
 """
 
 from __future__ import annotations
