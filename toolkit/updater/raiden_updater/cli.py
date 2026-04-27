@@ -77,8 +77,12 @@ def cmd_plan(args: argparse.Namespace) -> int:
     """Execute the plan command."""
     instance_root = Path(args.instance).resolve()
     package_root = Path(args.package).resolve()
+    allow_downgrade = getattr(args, "allow_downgrade", False)
 
-    plan = create_plan(instance_root, package_root)
+    if allow_downgrade:
+        print("WARNING: downgrade override active")
+
+    plan = create_plan(instance_root, package_root, allow_downgrade=allow_downgrade)
     print(_format_plan(plan))
 
     return 0 if plan.can_apply or plan.block_reason == "Already up to date — no changes needed" else 1
@@ -88,8 +92,12 @@ def cmd_apply(args: argparse.Namespace) -> int:
     """Execute the apply command."""
     instance_root = Path(args.instance).resolve()
     package_root = Path(args.package).resolve()
+    allow_downgrade = getattr(args, "allow_downgrade", False)
 
-    plan = create_plan(instance_root, package_root)
+    if allow_downgrade:
+        print("WARNING: downgrade override active")
+
+    plan = create_plan(instance_root, package_root, allow_downgrade=allow_downgrade)
     print(_format_plan(plan))
 
     if not plan.can_apply:
@@ -126,6 +134,10 @@ def main(argv: list[str] | None = None) -> int:
         "--package", required=True,
         help="Path to the Edict package directory",
     )
+    plan_parser.add_argument(
+        "--allow-downgrade", action="store_true", default=False,
+        help="Permit installing an older version than the one currently installed",
+    )
 
     # apply
     apply_parser = subparsers.add_parser(
@@ -138,6 +150,10 @@ def main(argv: list[str] | None = None) -> int:
     apply_parser.add_argument(
         "--package", required=True,
         help="Path to the Edict package directory",
+    )
+    apply_parser.add_argument(
+        "--allow-downgrade", action="store_true", default=False,
+        help="Permit installing an older version than the one currently installed",
     )
 
     args = parser.parse_args(argv)

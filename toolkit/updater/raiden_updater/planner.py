@@ -30,6 +30,7 @@ from .version import compare_versions
 def create_plan(
     instance_root: Path,
     package_root: Path,
+    allow_downgrade: bool = False,
 ) -> PlanResult:
     """Produce an update plan without mutating the filesystem.
 
@@ -84,6 +85,29 @@ def create_plan(
         return _blocked_plan(
             reason=f"Invalid version value: {exc}",
             conflict_type="invalid_version",
+        )
+
+    if version_cmp == "downgrade" and not allow_downgrade:
+        return PlanResult(
+            compatible=compatible,
+            compatibility_detail=compat_detail,
+            version_comparison=version_cmp,
+            current_version=metadata.installed_edict_version,
+            target_version=manifest.edict_version,
+            conflicts=[Conflict(
+                path="",
+                conflict_type="downgrade_blocked",
+                detail=(
+                    "Downgrade blocked: target version is lower than installed "
+                    "version. Use --allow-downgrade to override."
+                ),
+            )],
+            protected_paths=metadata.overlay_roots + metadata.live_state_roots,
+            can_apply=False,
+            block_reason=(
+                "Downgrade blocked: target version is lower than installed "
+                "version. Use --allow-downgrade to override."
+            ),
         )
 
     if not compatible:

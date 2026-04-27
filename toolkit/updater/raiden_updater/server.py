@@ -101,8 +101,9 @@ class InstallerAPIHandler(BaseHTTPRequestHandler):
                 self._send_error(400, "Missing package_root")
                 return
             package_root = Path(package_root_str)
+            allow_downgrade = bool(body.get("allow_downgrade", False))
             try:
-                plan = create_plan(instance_root, package_root)
+                plan = create_plan(instance_root, package_root, allow_downgrade=allow_downgrade)
                 self._send_json_response(200, dataclasses.asdict(plan))
             except Exception as e:
                 self._send_error(500, f"Plan failed: {e}")
@@ -116,8 +117,9 @@ class InstallerAPIHandler(BaseHTTPRequestHandler):
                 self._send_error(400, "Missing package_root")
                 return
             package_root = Path(package_root_str)
+            allow_downgrade = bool(body.get("allow_downgrade", False))
             try:
-                plan = create_plan(instance_root, package_root)
+                plan = create_plan(instance_root, package_root, allow_downgrade=allow_downgrade)
                 if not plan.can_apply:
                     self._send_error(400, f"Plan cannot be applied: {plan.block_reason}")
                     return

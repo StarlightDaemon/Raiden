@@ -10,6 +10,7 @@ import json
 from pathlib import Path
 
 from raiden_updater.planner import create_plan
+from raiden_updater.cli import main as cli_main
 from .conftest import (
     SAMPLE_INSTANCE,
     SAMPLE_PACKAGE,
@@ -264,3 +265,51 @@ def test_missing_baseline_allowed_for_empty_managed_root(env):
     assert plan.can_apply is True
     assert all(a.action == "add" for a in plan.file_actions)
     assert not plan.conflicts
+
+
+# ---------------------------------------------------------------------------
+# G-004: Downgrade block
+# ---------------------------------------------------------------------------
+
+def test_downgrade_blocked_by_default(env):
+    inst, pkg = env
+    # Instance at 0.3.0 is ahead of package at 0.2.0 → downgrade
+    set_metadata_field(inst, "installed_edict_version", "0.3.0")
+
+    plan = create_plan(inst, pkg)
+
+    assert plan.can_apply is False
+    assert plan.version_comparison == "downgrade"
+    assert any(c.conflict_type == "downgrade_blocked" for c in plan.conflicts)
+    assert "allow-downgrade" in plan.block_reason
+
+
+def test_downgrade_allowed_with_override(env):
+    inst, pkg = env
+    set_metadata_field(inst, "installed_edict_version", "0.3.0")
+
+    plan = create_plan(inst, pkg, allow_downgrade=True)
+
+    assert plan.version_comparison == "downgrade"
+    assert plan.can_apply is True
+    assert not any(c.conflict_type == "downgrade_blocked" for c in plan.conflicts)
+
+
+def test_cli_downgrade_warning_present(env, capsys):
+    inst, pkg = env
+    set_metadata_field(inst, "installed_edict_version", "0.3.0")
+
+    exit_code = cli_main(["plan", "--instance", str(inst), "--package", str(pkg), "--allow-downgrade"])
+
+    captured = capsys.readouterr()
+    assert "WARNING: downgrade override active" in captured.out
+    assert exit_code == 0
+
+
+def test_cli_downgrade_blocked_without_flag(env, capsys):
+    inst, pkg = env
+    set_metadata_field(inst, "installed_edict_version", "0.3.0")
+
+    exit_code = cli_main(["plan", "--instance", str(inst), "--package", str(pkg)])
+
+    assert exit_code == 1
