@@ -14,6 +14,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from .hasher import hash_file
+from .loader import load_instance_metadata
 from .models import InstalledBaseline, ManagedFileEntry, PlanResult
 
 
@@ -58,10 +59,12 @@ def apply_plan(
     if not plan.protected_paths and not plan.file_actions:
         raise ApplyError("Plan has no file actions and no protected paths")
 
-    # We derive managed root from the plan's context — it was built using
-    # metadata.managed_roots[0], but we reconstruct it here.
-    # MVP: always .raiden/writ
-    managed_root = instance_root / ".raiden" / "writ"
+    metadata = load_instance_metadata(instance_root)
+    if not metadata.managed_roots:
+        raise ApplyError(
+            "Instance metadata defines no managed_roots; cannot determine install target"
+        )
+    managed_root = instance_root / metadata.managed_roots[0]
     managed_root.mkdir(parents=True, exist_ok=True)
 
     # ── Apply file actions ────────────────────────────────────────────────
