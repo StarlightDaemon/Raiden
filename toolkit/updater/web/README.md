@@ -1,16 +1,38 @@
-# React + Vite
+# RAIDEN Web Installer — Operator Guide
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This directory contains the Vite/React frontend for the RAIDEN local web installer UI.
 
-Currently, two official plugins are available:
+## Starting the backend
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Run from `toolkit/updater/`:
 
-## React Compiler
+```
+python3 -m raiden_updater.server
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The backend listens on `127.0.0.1:8080` by default. It serves a JSON API used
+by the UI. Endpoints: `/api/scan`, `/api/init-preview`, `/api/init-apply`,
+`/api/plan`, `/api/apply`, `/api/doctor`, `/api/select-folder` (all `POST`).
 
-## Expanding the ESLint configuration
+See `CLAUDE.md §5` for the full endpoint reference.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Serving the UI
+
+During development, run the Vite dev server from this directory:
+
+```
+npm install
+npm run dev
+```
+
+For production use, build the UI (`npm run build`) and serve the `dist/` output
+statically. The Python backend does not serve the frontend; use a static file
+server or a reverse proxy pointed at `dist/`.
+
+## End-to-end operator workflow
+
+1. Start the Python backend (`python3 -m raiden_updater.server`).
+2. Start the Vite dev server (`npm run dev`) or serve a built `dist/`.
+3. Open the UI in a browser; it connects to the backend at `http://127.0.0.1:8080`.
+4. Use the UI to scan for existing RAIDEN instances, initialize new ones, run
+   plan/apply cycles, or run the doctor check.
