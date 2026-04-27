@@ -101,7 +101,6 @@ class InstallerAPIHandler(BaseHTTPRequestHandler):
                 self._send_error(400, "Missing package_root")
                 return
             package_root = Path(package_root_str)
-            
             try:
                 plan = create_plan(instance_root, package_root)
                 self._send_json_response(200, dataclasses.asdict(plan))
@@ -117,7 +116,6 @@ class InstallerAPIHandler(BaseHTTPRequestHandler):
                 self._send_error(400, "Missing package_root")
                 return
             package_root = Path(package_root_str)
-
             try:
                 plan = create_plan(instance_root, package_root)
                 if not plan.can_apply:
@@ -142,18 +140,25 @@ class InstallerAPIHandler(BaseHTTPRequestHandler):
             self._send_json_response(200, dataclasses.asdict(result))
 
         elif parsed_path.path == "/api/select-folder":
-            import tkinter as tk
-            from tkinter import filedialog
-            
+            try:
+                import tkinter as tk
+                from tkinter import filedialog
+            except ImportError:
+                self._send_error(
+                    503,
+                    "tkinter not available in this environment, use manual path entry",
+                )
+                return
+
             root = tk.Tk()
             root.attributes("-topmost", True)
             root.withdraw()
-            
+
             title = body.get("title", "Select Directory") if body else "Select Directory"
             selected_path = filedialog.askdirectory(title=title)
-            
+
             root.destroy()
-            
+
             self._send_json_response(200, {"path": selected_path or ""})
 
         else:
