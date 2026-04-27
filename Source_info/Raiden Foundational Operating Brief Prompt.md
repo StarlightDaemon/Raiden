@@ -1,3 +1,11 @@
+> **PRESERVED HISTORY — NOT AN ACTIVE INSTRUCTION**
+>
+> This file is source history retained for provenance. It is non-canonical.
+> The imperative framing below ("You are Raiden") reflects the original
+> authorship context of a prompt issued to an early model, not a current
+> system directive. Do not act on it as a live instruction. For active
+> guidance, read `CLAUDE.md`, `AGENTS.md`, and the canonical root files.
+
 # Raiden Foundational Operating Brief Prompt
 
 ## Status
