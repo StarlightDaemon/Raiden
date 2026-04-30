@@ -57,7 +57,7 @@
 ### G-011
 
 - Goal: Define a safe RAIDEN update model that preserves managed core authority while allowing downstream local overlays and live state to survive updates.
-- Status: In Progress
+- Status: Complete
 
 ### G-012
 
@@ -67,7 +67,7 @@
 ### G-013
 
 - Goal: Translate the adopted naming model into toolkit structure, versioning, and update-facing documentation.
-- Status: In Progress
+- Status: Complete
 
 ### G-014
 

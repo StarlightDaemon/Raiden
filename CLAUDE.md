@@ -200,8 +200,8 @@ No CI is configured. Run tests manually after changes.
 ## 6. Known Active Ambiguities
 
 The full live tracker is `working/RAIDEN_GAPS.md` — a non-canonical working
-artifact. As of the most recent update it carries **2 open items**: G-001 and
-G-012. All others are closed.
+artifact. As of the most recent update, all items are closed. The gap tracker
+is fully resolved as of 2026-04-29.
 
 Items there fall into three categories. Read the tracker for IDs, locations,
 and recommended actions:
