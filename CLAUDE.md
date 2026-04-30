@@ -173,9 +173,7 @@ Endpoints (all `POST`, JSON body, CORS `*`):
 `/api/scan`, `/api/init-preview`, `/api/init-apply`, `/api/plan`,
 `/api/apply`, `/api/doctor`, `/api/select-folder`.
 
-UI scaffold lives at `toolkit/updater/web/` (Vite/React). Its README is the
-generic Vite template — there is no RAIDEN-specific operator README yet
-(tracked in `working/RAIDEN_GAPS.md` G-007).
+UI scaffold lives at `toolkit/updater/web/` (Vite/React).
 
 ### Tests
 
@@ -189,27 +187,21 @@ No CI is configured. Run tests manually after changes.
 
 ### Known operational inconsistencies
 
-- **`applier.py:64` hard-codes `.raiden/writ` as the managed root**, ignoring
-  `metadata.managed_roots[0]`. Planner derives it from metadata; applier
-  doesn't. Agrees today because all canon uses `.raiden/writ`. Diverges
-  silently if `managed_roots` ever changes. Tracked as G-005.
-- **`server.py /api/select-folder` imports `tkinter`** despite the module
-  docstring claiming "dependency-free." Will `ImportError` on headless
-  systems. Tracked as G-006.
 - **No `pyproject.toml`**. Cannot `pip install raiden_updater`. Use the
   invocations above; do not assume importability outside the documented
   working directories.
-- **Downgrade is currently silently accepted** by the updater. Operator
-  working decision is to block; not yet promoted to root canon (see §6 and
-  G-004).
+- **Downgrade is blocked by default.** The updater returns
+  `block_reason="downgrade_not_supported"` and exits non-zero. An
+  `--allow-downgrade` flag is available as an explicit operator override.
+  Recorded as D-0036.
 
 ---
 
 ## 6. Known Active Ambiguities
 
 The full live tracker is `working/RAIDEN_GAPS.md` — a non-canonical working
-artifact. As of the most recent update it carries **12 open items** (G-001
-and G-003 through G-013; G-002 is closed).
+artifact. As of the most recent update it carries **2 open items**: G-001 and
+G-012. All others are closed.
 
 Items there fall into three categories. Read the tracker for IDs, locations,
 and recommended actions:

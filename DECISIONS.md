@@ -300,3 +300,16 @@
 - Decision: the RAIDEN operator installation surface will target a local web UI, not native OS GUI variants, and install/update behavior should be treated as one installer surface with update mode rather than as separate products.
 - Rationale: RAIDEN's operator workflow is repo-centric, cross-platform, and review-heavy. A local web surface is the best fit for repo scanning, legacy-artifact review, managed-versus-local inspection, plan previews, and conflict handling without maintaining separate Windows, macOS, and Linux GUI stacks.
 - Implementation note: keep filesystem and package logic in local backend or CLI surfaces, keep the operator interaction model browser-first on localhost, and leave native GUI packaging out of current scope unless canon changes later.
+
+## D-0036
+
+- Date: 2026-04-26
+- Status: Active
+- Decision: Downgrade is blocked by default in the updater. An
+  `--allow-downgrade` CLI flag is available as an explicit operator
+  override. The correct response to a problematic Edict version is
+  always a newer fixed version, not a rollback.
+- Rationale: Silently accepting a downgrade creates an asymmetric risk:
+  it allows an operator error to quietly regress a managed instance with
+  no warning. The override flag preserves the escape hatch without making
+  regression the default. Fixed in commit 7d4628d; closes G-004.
