@@ -24,6 +24,8 @@ Key root files:
 | Path | Role |
 |---|---|
 | `README.md` | repository identity and top-level framing |
+| `AGENTS.md` | RAIDEN agent guide; primary startup bridge for agents invoked in this repo |
+| `CLAUDE.md` | Claude Code session anchor; canonical session startup procedure and inviolable rules |
 | `OPERATING_INTENT.md` | canonical mission-and-operating-intent layer |
 | `SOURCE_OF_TRUTH.md` | authority order and promotion rules |
 | `REPOSITORY_MAP.md` | navigation and structural map |
@@ -31,6 +33,7 @@ Key root files:
 | `ARTIFACT_AUDIENCE.md` | artifact audience, intended-role, and non-use classification rules |
 | `MANAGED_VS_LOCAL.md` | update boundary between managed RAIDEN core and downstream local layers |
 | `INGRESS_POLICY.md` | intake, review, optional extraction, and retirement rules for external repo evidence |
+| `SNAPSHOT_RETIREMENT_RULE.md` | governance rule for retiring large prototype snapshots after review and extraction |
 | `CURRENT_STATE.md` | current RAIDEN repo state |
 | `PAST_PRESENT_FUTURE.md` | canonical planning view of completed work, current phase, and next trajectory |
 | `RELEASE_READY_CHECKLIST.md` | canonical release-preparation gate before updater canon resumes |

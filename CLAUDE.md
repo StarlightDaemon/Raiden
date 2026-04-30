@@ -1,12 +1,9 @@
 # CLAUDE.md — RAIDEN Session Anchor
 
-**Status: Working draft — not yet committed to canon. Do not treat as
-authoritative until confirmed in `REPOSITORY_MAP.md`.**
-
 Persistent context for any Claude Code session in this repo. Read this first.
 Authoritative companions: `SOURCE_OF_TRUTH.md`, `AGENT_BOUNDARIES.md`,
 `REPOSITORY_MAP.md`, `CURRENT_STATE.md`. This file orients an agent quickly;
-it does not replace canon.
+it does not substitute for reading the full canonical stack.
 
 ---
 
