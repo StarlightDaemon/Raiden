@@ -34,7 +34,9 @@ Last updated: 2026-04-26.
   `CLAUDE.md` Session Startup Procedure. No further action unless the
   operator wants it promoted to a standalone asset under `toolkit/prompts/`.
 
-## G-003 | `.codex/config.toml` and `.codex.placeholder` undocumented
+## G-003 | `.codex/config.toml` and `.codex.placeholder` undocumented — RESOLVED 2026-04-26
+
+- **Status**: Closed — 2026-04-26 — commit 8279864. Added "Non-Canonical Root Artifacts" section to REPOSITORY_MAP.md documenting `.codex/` and `.codex.placeholder` as legacy, non-canonical.
 
 - **Location**: repo root; not listed in `REPOSITORY_MAP.md`.
 - **Why still live**: The model-agnostic governance repo carries a Codex
@@ -48,7 +50,9 @@ Last updated: 2026-04-26.
   noting these as host-specific operator artifacts (non-canonical, legacy),
   or delete them. Pick one. Do not leave undocumented.
 
-## G-004 | Updater silently accepts downgrade — code bug
+## G-004 | Updater silently accepts downgrade — code bug — RESOLVED 2026-04-26
+
+- **Status**: Closed — 2026-04-26 — commit 7d4628d. Downgrade now blocked by default in planner; `--allow-downgrade` CLI flag added as override.
 
 - **Location**: `toolkit/updater/raiden_updater/version.py` (returns
   `"downgrade"`); `toolkit/updater/raiden_updater/planner.py` and
@@ -66,7 +70,9 @@ Last updated: 2026-04-26.
   "provisional" framing and state the policy. Reflect the resolution in
   `DECISIONS.md` as a small canon update when the fix lands.
 
-## G-005 | `applier.py` hard-codes `.raiden/writ` instead of reading metadata
+## G-005 | `applier.py` hard-codes `.raiden/writ` instead of reading metadata — RESOLVED 2026-04-26
+
+- **Status**: Closed — 2026-04-26 — commit 37eeec4. `applier.py:64` fixed to derive `managed_root` from `metadata.managed_roots[0]` instead of hard-coding `.raiden/writ`.
 
 - **Location**: `toolkit/updater/raiden_updater/applier.py:64`.
 - **Why still live**: The planner derives the managed root from
@@ -78,7 +84,9 @@ Last updated: 2026-04-26.
   loaded metadata, plus a test that fails if planner-derived and
   applier-derived roots diverge.
 
-## G-006 | `server.py` "dependency-free" claim broken by tkinter import
+## G-006 | `server.py` "dependency-free" claim broken by tkinter import — RESOLVED 2026-04-26
+
+- **Status**: Closed — 2026-04-26 — commit 745cb70. `tkinter` import in `server.py` `/api/select-folder` guarded behind a runtime capability check; returns clean JSON error on headless systems.
 
 - **Location**: `toolkit/updater/raiden_updater/server.py`, `/api/select-folder`
   endpoint.
@@ -92,7 +100,9 @@ Last updated: 2026-04-26.
   the "dependency-free" claim. Prefer the guard — it preserves both the
   guarantee and the convenience feature.
 
-## G-007 | `toolkit/updater/web/` has no RAIDEN-specific README
+## G-007 | `toolkit/updater/web/` has no RAIDEN-specific README — RESOLVED 2026-04-26
+
+- **Status**: Closed — 2026-04-26 — commit 6198098. `toolkit/updater/web/README.md` replaced with RAIDEN-specific operator guide covering backend startup, endpoint reference, and end-to-end workflow.
 
 - **Location**: `toolkit/updater/web/README.md` (default Vite template).
 - **Why still live**: An operator finding `web/` first sees only the
@@ -103,7 +113,9 @@ Last updated: 2026-04-26.
   RAIDEN-specific operator note keyed to the `serve` command and the
   documented endpoints. Reference the relevant section in `CLAUDE.md §5`.
 
-## G-008 | `RAIDEN_NEXT_STEP_WORKING_PLAN.md` at root, not in canon table
+## G-008 | `RAIDEN_NEXT_STEP_WORKING_PLAN.md` at root, not in canon table — RESOLVED 2026-04-26
+
+- **Status**: Closed — 2026-04-26 — commit 8279864. `RAIDEN_NEXT_STEP_WORKING_PLAN.md` labeled "historical working draft; not current guidance; non-canonical" in the same REPOSITORY_MAP.md edit as G-003.
 
 - **Location**: repo root; not listed in `REPOSITORY_MAP.md` Canon Layer
   table.
@@ -115,7 +127,9 @@ Last updated: 2026-04-26.
   `Source_info/`), or add a single-line entry to `REPOSITORY_MAP.md`
   labeling it "historical, non-canonical." Either resolves the confusion.
 
-## G-009 | `Source_info/Raiden Foundational Operating Brief Prompt.md` is imperative
+## G-009 | `Source_info/Raiden Foundational Operating Brief Prompt.md` is imperative — RESOLVED 2026-04-26
+
+- **Status**: Closed — 2026-04-26 — commit d9e25cc. "PRESERVED HISTORY — NOT AN ACTIVE INSTRUCTION" blockquote prepended to `Source_info/Raiden Foundational Operating Brief Prompt.md`.
 
 - **Location**: `Source_info/Raiden Foundational Operating Brief Prompt.md`.
 - **Why still live**: The file has a non-canonical status header, but the
@@ -127,7 +141,9 @@ Last updated: 2026-04-26.
   text in a quoted block so it cannot be parsed as a current-day system
   prompt.
 
-## G-010 | `legacy.py` consumer/lifecycle undocumented
+## G-010 | `legacy.py` consumer/lifecycle undocumented — RESOLVED 2026-04-26
+
+- **Status**: Closed — 2026-04-26 — commit 79562ea. `legacy.py` module docstring expanded to name the shim's origin, flag the unknown original consumer, and state an actionable retirement condition.
 
 - **Location**: `toolkit/updater/raiden_updater/legacy.py`;
   `toolkit/updater/tests/test_legacy.py`.
@@ -139,7 +155,9 @@ Last updated: 2026-04-26.
   original consumer (or the situation that motivated the shim) and the
   condition under which it can be retired.
 
-## G-011 | `reference-repos/README.md` describes an active intake for an empty directory
+## G-011 | `reference-repos/README.md` describes an active intake for an empty directory — RESOLVED 2026-04-26
+
+- **Status**: Closed — 2026-04-26 — doc-gap batch session 2026-04-26 (working/2026-04-26__doc-gap-batch-G003-G007-G008-G009-G010-G011.txt). `reference-repos/README.md` replaced with one-paragraph notice: empty by design; all prior snapshots retired; future intake gated by INGRESS_POLICY.md §0.
 
 - **Location**: `reference-repos/README.md`.
 - **Why still live**: All prototype snapshots have been retired. The
@@ -161,7 +179,9 @@ Last updated: 2026-04-26.
 - **Recommended action**: Decide as part of the G-001 staging plan.
   Default expectation: commit under `working/` with no canon promotion.
 
-## G-013 | `working/evaluation-*` and `setup_v{1,2}.py` are stale fixtures
+## G-013 | `working/evaluation-*` and `setup_v{1,2}.py` are stale fixtures — RESOLVED 2026-04-26
+
+- **Status**: Closed — 2026-04-26 — commit 31b1dcf. `working/evaluation-package/`, `working/evaluation-instance/`, `working/setup_v1.py`, and `working/setup_v2.py` deleted; official fixtures at `toolkit/updater/fixtures/` supersede.
 
 - **Location**: `working/evaluation-package/`, `working/evaluation-instance/`,
   `working/setup_v1.py`, `working/setup_v2.py`. Note:

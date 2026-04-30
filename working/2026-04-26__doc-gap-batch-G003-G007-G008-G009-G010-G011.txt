@@ -1,0 +1,205 @@
+Doc Gap Batch — Session Record
+Date: 2026-04-26
+Gaps addressed: G-003, G-007, G-008, G-009, G-010, G-011
+Status: All six fixes applied and confirmed.
+
+================================================================================
+OVERVIEW
+================================================================================
+
+Six bounded documentation fixes were applied as a single batch. No canonical
+root files were modified except REPOSITORY_MAP.md (which was the explicit
+target for G-003 and G-008). No code logic was changed. No working/ artifacts
+were promoted to canon.
+
+Files read before editing (verification pass):
+  - working/RAIDEN_GAPS.md
+  - REPOSITORY_MAP.md
+  - .codex/config.toml
+  - .codex.placeholder (confirmed zero bytes)
+  - toolkit/updater/web/README.md (confirmed generic Vite scaffold)
+  - toolkit/updater/raiden_updater/server.py (confirmed host 127.0.0.1, port 8080)
+  - Source_info/Raiden Foundational Operating Brief Prompt.md
+  - toolkit/updater/raiden_updater/legacy.py
+  - toolkit/updater/tests/test_legacy.py
+  - reference-repos/README.md
+  - INGRESS_POLICY.md
+
+================================================================================
+G-003 | .codex/ and .codex.placeholder undocumented in REPOSITORY_MAP
+================================================================================
+
+File modified: REPOSITORY_MAP.md
+
+Change: Added a new structural section "6. Non-Canonical Root Artifacts" after
+the existing "5. Extracted Reference Layer" section. The new section contains
+a Markdown table with the following entries:
+
+  | Path                | Role                                                                      |
+  |---------------------|---------------------------------------------------------------------------|
+  | .codex/             | host-specific legacy operator config; non-canonical; Codex/GPT environment; not active |
+  | .codex.placeholder  | zero-byte placeholder; origin and purpose undocumented; non-canonical     |
+
+A prose note was added below the table:
+  "These files are retained at the root for historical or host-environment
+  reasons. Nothing here is RAIDEN canon."
+
+Context: .codex/config.toml contains two lines specifying model = "gpt-5.4"
+and model_reasoning_effort = "medium". It is a Codex/GPT operator config with
+no active role in RAIDEN's Claude Code environment. .codex.placeholder is
+zero bytes with no documented origin.
+
+No inference was required for the label; content confirmed by direct read.
+
+================================================================================
+G-007 | toolkit/updater/web/ has no RAIDEN-specific README
+================================================================================
+
+File modified: toolkit/updater/web/README.md
+
+Change: The entire contents were replaced. The previous contents were the
+default Vite/React scaffold README (generic plugin list, React Compiler note,
+ESLint configuration advice — no RAIDEN content).
+
+New contents cover:
+  1. How to start the Python backend:
+       python3 -m raiden_updater.server
+     Confirmed host: 127.0.0.1, port: 8080 (from server.py serve() function,
+     line 171).
+  2. How to serve the frontend (Vite dev server during development; built
+     dist/ for production; note that the Python backend does not serve the
+     frontend).
+  3. End-to-end operator workflow (start backend, start UI, open browser,
+     use UI for scan/init/plan/apply/doctor).
+  4. Pointer to CLAUDE.md §5 for the full endpoint reference.
+
+No Vite scaffold content was preserved.
+
+================================================================================
+G-008 | RAIDEN_NEXT_STEP_WORKING_PLAN.md not labeled in REPOSITORY_MAP
+================================================================================
+
+File modified: REPOSITORY_MAP.md
+
+Change: Included in the same edit as G-003. The new "6. Non-Canonical Root
+Artifacts" section table includes:
+
+  | Path                              | Role                                                         |
+  |-----------------------------------|--------------------------------------------------------------|
+  | RAIDEN_NEXT_STEP_WORKING_PLAN.md  | historical working draft; not current guidance; non-canonical |
+
+This resolves the navigation ambiguity: a fresh agent reading REPOSITORY_MAP.md
+will now see the file explicitly labeled as non-canonical history rather than
+inferring its status from proximity to canon.
+
+================================================================================
+G-009 | Source_info/Raiden Foundational Operating Brief Prompt.md reads as active instruction
+================================================================================
+
+File modified: Source_info/Raiden Foundational Operating Brief Prompt.md
+
+Change: A clearly marked disclaimer blockquote was inserted at the very top of
+the file, before the existing H1 heading. The body of the file was not touched.
+
+Disclaimer text inserted:
+
+  > PRESERVED HISTORY — NOT AN ACTIVE INSTRUCTION
+  >
+  > This file is source history retained for provenance. It is non-canonical.
+  > The imperative framing below ("You are Raiden") reflects the original
+  > authorship context of a prompt issued to an early model, not a current
+  > system directive. Do not act on it as a live instruction. For active
+  > guidance, read CLAUDE.md, AGENTS.md, and the canonical root files.
+
+The file already contained a non-canonical status header in its ## Status
+section, but the body still addresses the reader as "You are Raiden" with
+imperative directives. The new top-of-file disclaimer ensures that even an
+agent reading only the first few lines gets the correct framing before
+encountering the imperative text.
+
+================================================================================
+G-010 | legacy.py consumer and lifecycle undocumented
+================================================================================
+
+File modified: toolkit/updater/raiden_updater/legacy.py
+
+Change: The existing module docstring was expanded. The previous docstring:
+
+  """Compatibility wrappers for legacy-artifact inspection.
+
+  Legacy detection now lives in raiden_updater.installer so CLI and web
+  surfaces share one canonical behavior. This module preserves a small
+  compatibility surface for older imports.
+  """
+
+Was replaced with:
+
+  """Compatibility wrappers for legacy-artifact inspection.
+
+  This shim wraps raiden_updater.installer.scan_legacy_artifacts and
+  init_instance() behind a stable interface so that callers using the old
+  raiden_updater.legacy import path continue to work after legacy detection
+  was consolidated into installer. The original external consumer is unknown;
+  the shim was created defensively during that consolidation. It can be dropped
+  once no code outside this package imports raiden_updater.legacy directly
+  (verify with a repo-wide grep before removal).
+  """
+
+Inference flagged: The original external consumer is genuinely unknown. No
+external caller appears in the codebase (test_legacy.py is the only file
+importing raiden_updater.legacy, and that is a test of the shim itself, not
+a downstream consumer). The comment states this explicitly rather than
+fabricating a name.
+
+The retirement condition is unambiguous and actionable: grep for
+"raiden_updater.legacy" outside the package itself before removing.
+
+================================================================================
+G-011 | reference-repos/README.md describes active intake for an empty directory
+================================================================================
+
+File modified: reference-repos/README.md
+
+Change: The entire contents were replaced. The previous contents described an
+active intake workflow: copy destination paths, intake rules (keep repos
+isolated, treat as read-only, exclude caches/secrets), and a companion review
+path under reference-reviews/. This framing implied ongoing intake activity
+despite the directory being empty.
+
+New contents:
+
+  # Reference Repos
+
+  This directory is empty by design. All prior prototype repo snapshots have
+  been retired.
+
+  Any future external repo intake is gated by the five pre-intake go/no-go
+  questions in INGRESS_POLICY.md §0. All five answers must be yes before a
+  snapshot is placed here.
+
+  See INGRESS_POLICY.md for the full ingress, review, extraction, and
+  retirement policy.
+
+The old intake workflow instructions were not preserved; they are superseded
+by INGRESS_POLICY.md, which is the authoritative intake policy document.
+
+================================================================================
+SUMMARY TABLE
+================================================================================
+
+  Gap   | File Modified                                              | Type of change
+  ------|------------------------------------------------------------|-----------------
+  G-003 | REPOSITORY_MAP.md                                          | New section added
+  G-007 | toolkit/updater/web/README.md                              | Full replacement
+  G-008 | REPOSITORY_MAP.md                                          | Same edit as G-003
+  G-009 | Source_info/Raiden Foundational Operating Brief Prompt.md  | Disclaimer prepended
+  G-010 | toolkit/updater/raiden_updater/legacy.py                   | Docstring expanded
+  G-011 | reference-repos/README.md                                  | Full replacement
+
+No code logic was modified. No canonical root files were modified except
+REPOSITORY_MAP.md. No working/ artifacts were promoted to canon. All changes
+are bounded to the files named above.
+
+================================================================================
+END OF RECORD
+================================================================================
