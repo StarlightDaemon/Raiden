@@ -8,11 +8,14 @@ explicit adoption into a root file.
 
 Format: **ID | Title | Location | Why still live | Recommended action**.
 
-Last updated: 2026-04-26.
+Last updated: 2026-04-29.
 
 ---
 
 ## G-001 | Worktree release-staging plan never produced
+- **Status**: Closed — 2026-04-29 — commits ec71e1f, 0f3d01c. Staging
+  plan produced 2026-04-29; 4 dirty paths classified and committed in two
+  thematic commits; branch pushed to origin/main; working tree clean.
 
 - **Location**: `working/current-task-set/raiden-worktree-cleanup-and-release-staging-prompt__gpt55-high.md`;
   `git status` (untracked working artifacts present).
@@ -170,6 +173,9 @@ Last updated: 2026-04-26.
   and remove the active-intake framing.
 
 ## G-012 | `working/2026-04-26__workspace-audit.md` is untracked
+- **Status**: Closed — 2026-04-29 — commit 76381d6. File was committed
+  under working/ as a retained working artifact in the 2026-04-26 session;
+  no canon promotion needed.
 
 - **Location**: `working/2026-04-26__workspace-audit.md`.
 - **Why still live**: Most recent agent-produced full audit; contains the
